@@ -1,0 +1,28 @@
+{
+  "pontos": [
+    
+	{
+		"PontoID": "Ponto A",
+		"Latitude":"10",
+		"Longitude":"20"
+	},
+	
+    {
+		"PontoID": "Ponto B",
+		"Latitude":"15",
+		"Longitude":"25"
+	},
+    
+	{
+		"PontoID": "Ponto C",
+		"Latitude": "-10",
+		"Longitude": "-20"
+	},
+	
+	{
+		"PontoID": "Ponto D",
+		"Latitude":"-5",
+		"Longitude":"5"
+	}
+  ]
+}
