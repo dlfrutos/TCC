@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import com.example.daniel.jsontest2.Adapters.AdapterLinhaPonto
+import com.example.daniel.jsontest2.Adapters.LinhaPontoViewHolder.Companion.LINHA_SELECIONADA
+import com.example.daniel.jsontest2.Adapters.LinhaPontoViewHolder.Companion.PONTO_SELECIONADO2
 import com.example.daniel.jsontest2.Adapters.PontosAdapter
 import com.example.daniel.jsontest2.Modelos.PontosFeed
 import com.example.daniel.jsontest2.R
@@ -21,8 +24,8 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
         setContentView(R.layout.activity_hora_ponto_linha)
         recyclerView_hpl_sel.layoutManager = LinearLayoutManager(this)
 
-        val pontoSelecionado = intent.getStringExtra(ListaPontoMaisProximoActivity.PONTO_SELECIONADO)
-        val linhaSelecionada = intent.getStringExtra(LinhaPontoActivity.LINHA_SELECIONADA)
+        val pontoSelecionado = intent.getStringExtra(PONTO_SELECIONADO2)
+        val linhaSelecionada = intent.getStringExtra(LINHA_SELECIONADA)
 
         println("Ponto Sel: " + pontoSelecionado)
         println("Linhas Sel: " + linhaSelecionada)

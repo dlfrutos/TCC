@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import com.example.daniel.jsontest2.Modelos.Pontos
 import com.example.daniel.jsontest2.Modelos.PontosFeed
 
-class AdapterLinhaHoraPonto(val pontosFeed: PontosFeed) : RecyclerView.Adapter<LHPviewHolder>(){
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): LHPviewHolder {
+class AdapterLinhaHoraPonto(val pontosFeed: PontosFeed) : RecyclerView.Adapter<LHPViewHolder>(){
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): LHPViewHolder {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -15,12 +15,12 @@ class AdapterLinhaHoraPonto(val pontosFeed: PontosFeed) : RecyclerView.Adapter<L
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onBindViewHolder(p0: LHPviewHolder, p1: Int) {
+    override fun onBindViewHolder(p0: LHPViewHolder, p1: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }
 
-class LHPviewHolder (val view: View, var ponto: Pontos? = null) : RecyclerView.ViewHolder(view){
+class LHPViewHolder (val view: View, var ponto: Pontos? = null) : RecyclerView.ViewHolder(view){
 
 }

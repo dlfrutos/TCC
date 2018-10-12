@@ -1,31 +1,30 @@
 package com.example.daniel.jsontest2.Activities
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.example.daniel.jsontest2.Adapters.AdapterLinhaPonto
-import com.example.daniel.jsontest2.Adapters.PontosProximosAdapter
+import com.example.daniel.jsontest2.Modelos.Pontos
 import com.example.daniel.jsontest2.Modelos.PontosFeed
 import com.example.daniel.jsontest2.R
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_linha_ponto.*
-import kotlinx.android.synthetic.main.activity_lista_ponto_mais_proximo.*
 import okhttp3.*
 import java.io.IOException
 
 class LinhaPontoActivity : AppCompatActivity() {
+
     companion object {
-        val LINHA_SELECIONADA = "Linha_Selecionada"
+        var PONTO_VALOR = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_linha_ponto)
 
+        PONTO_VALOR = intent.getStringExtra(ListaPontoMaisProximoActivity.PONTO_SELECIONADO)
         recyclerView_linha_ponto.layoutManager = LinearLayoutManager(this)
         fetchJsonPontos()
-
     }
 
     private fun fetchJsonPontos() {
@@ -42,24 +41,23 @@ class LinhaPontoActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call, response: Response) {
                 var body = response.body()?.string()
+                val pontoSelecionado = intent.getStringExtra(ListaPontoMaisProximoActivity.PONTO_SELECIONADO)
 
                 //rotina para retirar \r\n
                 body = body?.replace("\r\n", "")
                 body = body?.replace("\t", "")
 
                 //construir objeto a partir do JSON
-                println(body)
+                //println(body)
                 val gson = GsonBuilder().create()
                 val pontosFeed = gson.fromJson(body, PontosFeed::class.java)
-
-
                 val pontosFeed2 = encontraLinhas(pontosFeed)
-
 
                 //mando informação para o adapter
                 //que irá atualizar o recycled view
                 runOnUiThread {
-                    txt_linha_ponto_selecionado.text = "Ponto Selecionado: "+intent.getStringExtra(ListaPontoMaisProximoActivity.PONTO_SELECIONADO)
+                    txt_linha_ponto_selecionado.text = "Ponto Selecionado: " + intent.getStringExtra(ListaPontoMaisProximoActivity.PONTO_SELECIONADO)
+
                     recyclerView_linha_ponto.adapter = AdapterLinhaPonto(pontosFeed2!!)
                 }
             }

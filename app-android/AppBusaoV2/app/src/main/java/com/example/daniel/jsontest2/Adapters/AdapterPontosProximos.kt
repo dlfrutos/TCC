@@ -13,7 +13,6 @@ import com.example.daniel.jsontest2.R
 import kotlinx.android.synthetic.main.modulo_lista_ponto.view.*
 
 class PontosProximosAdapter(val pontosFeed: PontosFeed) : RecyclerView.Adapter<PontoProxViewHolder>() {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PontoProxViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val celula = layoutInflater.inflate(R.layout.modulo_lista_ponto, parent, false)
@@ -25,8 +24,6 @@ class PontosProximosAdapter(val pontosFeed: PontosFeed) : RecyclerView.Adapter<P
     }
 
     override fun onBindViewHolder(holder: PontoProxViewHolder, position: Int) {
-//        val nomePontos = nomePontos.get(position)
-
         val nomePontos = pontosFeed.pontos.get(position)
         holder.view.txt_ponto_id.text = nomePontos.PontoID
         //nomePontos.Distancia = 5
@@ -39,14 +36,11 @@ class PontosProximosAdapter(val pontosFeed: PontosFeed) : RecyclerView.Adapter<P
 }
 
 class PontoProxViewHolder(val view: View, var ponto: Pontos? = null) : RecyclerView.ViewHolder(view) {
-
     init {
         view.setOnClickListener() {
-            val intent = Intent(view.context, LinhaPontoActivity::class.java)
-            intent.putExtra(PONTO_SELECIONADO, ponto?.PontoID)
-            view.context.startActivity(intent)
+            val intentAPP = Intent(view.context, LinhaPontoActivity::class.java)
+            intentAPP.putExtra(PONTO_SELECIONADO, ponto?.PontoID)
+            view.context.startActivity(intentAPP)
         }
     }
-
-
 }

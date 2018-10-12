@@ -5,10 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.daniel.jsontest2.Activities.LinhaPontoActivity
+import com.example.daniel.jsontest2.Activities.LinhaPontoActivity.Companion.PONTO_VALOR
 import com.example.daniel.jsontest2.Activities.LinhaPontoHoraActivity
 import com.example.daniel.jsontest2.Modelos.Linhas
-import com.example.daniel.jsontest2.Modelos.Pontos
 import com.example.daniel.jsontest2.Modelos.PontosFeed
 import com.example.daniel.jsontest2.R
 import kotlinx.android.synthetic.main.modulo_linha_ponto.view.*
@@ -26,19 +25,23 @@ class AdapterLinhaPonto(val pontosFeed: PontosFeed) : RecyclerView.Adapter<Linha
 
 
     override fun onBindViewHolder(holder: LinhaPontoViewHolder, position: Int) {
-        val nomeLinhas = pontosFeed.linhas.get(position)
-        holder.view.txt_linha_ponto_id.text = nomeLinhas.LinhaID
+        val linhas = pontosFeed.linhas.get(position)
+        holder.itemView.txt_linha_ponto_id.text = linhas.LinhaID
+        holder.linhas=linhas
     }
-
-
 }
 
 class LinhaPontoViewHolder(val view: View, var linhas: Linhas? = null) : RecyclerView.ViewHolder(view) {
+    companion object {
+        val LINHA_SELECIONADA = "Linha_Selecionada"
+        val PONTO_SELECIONADO2 = "Ponto_Selecionado2"
+    }
 
     init {
         view.setOnClickListener() {
             val intent = Intent(view.context, LinhaPontoHoraActivity::class.java)
-            intent.putExtra(LinhaPontoActivity.LINHA_SELECIONADA, linhas?.LinhaID)
+            intent.putExtra(LINHA_SELECIONADA, linhas?.LinhaID)
+            intent.putExtra(PONTO_SELECIONADO2,  PONTO_VALOR)
             view.context.startActivity(intent)
         }
     }

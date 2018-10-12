@@ -49,8 +49,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
         //checando permissão
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
@@ -114,8 +112,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent3)
         }
         btn_ListaLinhas.setOnClickListener() {
-            val intent3 = Intent(this, ListaLinhaActivity::class.java)
-            startActivity(intent3)
+            val intent4 = Intent(this, ListaLinhaActivity::class.java)
+            startActivity(intent4)
         }
 
     }
