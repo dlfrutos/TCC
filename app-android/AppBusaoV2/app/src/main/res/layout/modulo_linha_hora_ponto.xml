@@ -14,62 +14,45 @@
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="h,16:9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     <TextView
-        android:id="@+id/txt_lhp_pontoID"
+        android:id="@+id/txt_mlhp_pontoID"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="PontoID"
-        android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView_lhp_imagem_ponto"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_ponto_latitude"
-        android:layout_width="0dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Latitude"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView_lhp_imagem_ponto"
-        app:layout_constraintTop_toBottomOf="@+id/txt_ponto_longitude" />
-
-    <TextView
-        android:id="@+id/txt_ponto_longitude"
+        android:id="@+id/txt_mlhp_ponto_end"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Longitude"
+        android:text="Rua, Num"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView_lhp_imagem_ponto"
-        app:layout_constraintTop_toBottomOf="@+id/txt_lhp_pontoID" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_mlhp_pontoID" />
 
     <TextView
-        android:id="@+id/txt_ponto_distancia"
+        android:id="@+id/txt_mlhp_ponto_prevChegada"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Distância"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Prev. Chegada"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView_lhp_imagem_ponto"
-        app:layout_constraintTop_toBottomOf="@+id/txt_ponto_latitude" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_mlhp_ponto_end" />
+
 </android.support.constraint.ConstraintLayout>

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.example.daniel.jsontest2.Adapters.AdapterLinhaPonto
-import com.example.daniel.jsontest2.Modelos.Pontos
 import com.example.daniel.jsontest2.Modelos.PontosFeed
 import com.example.daniel.jsontest2.R
 import com.google.gson.GsonBuilder
@@ -67,10 +66,7 @@ class LinhaPontoActivity : AppCompatActivity() {
 
                 var i = 0
                 while (i < pontosFeed!!.linhas.count()) {
-
                     val pontoSelecionado = intent.getStringExtra(ListaPontoMaisProximoActivity.PONTO_SELECIONADO)
-
-                    //pontosFeed!!.linhas.forEach {
                     if (pontosFeed!!.linhas.get(i).RoteiroPontos.contains(pontoSelecionado, true)) {
                     } else {
                         println("ENCONTRADO PONTO: " + i)
