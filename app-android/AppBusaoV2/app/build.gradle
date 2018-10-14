@@ -45,4 +45,9 @@ dependencies {
     //para resolver o multidex method problem
     implementation 'com.android.support:multidex:1.0.3'
 
+    //trabalhando com tempo
+    // https://github.com/hotchemi/khronos
+    // implementation 'com.github.hotchemi:khronos:0.9.0'
+
+
 }
