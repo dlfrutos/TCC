@@ -77,9 +77,7 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
                 val horaCalculada = calendario
                 val intervaloMinutos = 10
 
-                //
-                horaCalculada.set(calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DATE), 0, 0, 0)
-
+//
 //                val diaSemana = Calendar.getInstance().get(Calendar.DAY_OF_WEEK) //dia da semana int
 //                val diaMes = Calendar.getInstance().get(Calendar.DATE)  //dia do mes int
 //                val horaDia = Calendar.getInstance().get(Calendar.HOUR_OF_DAY) //hora atual int
@@ -134,24 +132,29 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
                 // j= ponto inicial da linha
                 i = 0
                 while (i < pontosFeed.horaLinha.count() - 1) {
-                    var j = 0
-                    var minuto: Int
-                    var hora: Int
+                    var j = 1
+                    var minuto = pontosFeed.horaLinha.get(i).Hora.substring(0, 2)
+                    var hora = pontosFeed.horaLinha.get(i).Hora.substring(pontosFeed.horaLinha.get(i).Hora.length - 2, pontosFeed.horaLinha.get(i).Hora.length)
+                    var token = false
+
+                    //cria a DataHora em função da primeira hora registrada
+                    horaCalculada.set(calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DATE), Integer.valueOf(hora), Integer.valueOf(minuto), 0)
+
+                    //seta a primeira hora
+                    pontosFeed.horaLinhaPontos.get(0).horaCalc = horaCalculada.time.toString()
+
+                    println(horaCalculada.time)
+
                     //varredura dos pontos da linha
-                    while (j < pontosFeed.horaLinhaPontos.count()) {
+                    while (j < pontosFeed.horaLinhaPontos.count() && !token) {
+                        horaCalculada.add(Calendar.MINUTE, intervaloMinutos)
+                        pontosFeed.horaLinhaPontos.get(j).horaCalc = horaCalculada.time.toString()
 
-                        val minuto = pontosFeed.horaLinha.get(i).Hora.substring(0, 2)
-                        val hora = pontosFeed.horaLinha.get(i).Hora.substring(pontosFeed.horaLinha.get(i).Hora.length - 2, pontosFeed.horaLinha.get(i).Hora.length)
-                        //seta a hora do primeiro ponto (programada)
-                        if (j == 0) {
-                        }
-
-                        //caso nao seja o primeiro calcula pelo intervalo
-                        else {
-                            pontosFeed.horaLinhaPontos.get(j).Hora += intervaloMinutos
-                        }
-
+                        //calcula pelo intervalo
                         if (pontosFeed.horaLinhaPontos.get(j).PontoID == pontoSelecionado) {
+                            if (calendario.time > horaCalculada.time) {
+                                token = true
+                            }
                         }
                         j++
                     }

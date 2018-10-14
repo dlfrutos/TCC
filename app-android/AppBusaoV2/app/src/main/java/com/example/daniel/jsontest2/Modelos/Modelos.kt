@@ -19,7 +19,7 @@ class HoraLinha(var LinhaID: String, var RoteiroInicio: String, var RoteiroFim: 
 
 //Lista de pontos
 //Tabela de horários da linhas
-class HoraLinhaPontos(var LinhaID: String, var RoteiroInicio: String, var RoteiroFim: String, var PontoID: String, var Hora: String)
+class HoraLinhaPontos(var LinhaID: String, var RoteiroInicio: String, var RoteiroFim: String, var PontoID: String, var Hora: String, var horaCalc: String)
 
 //{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","DiaSemana":"2, 3, 4, 5, 6","Hora":"6:05"},
 //Falta implementar: lista horários
