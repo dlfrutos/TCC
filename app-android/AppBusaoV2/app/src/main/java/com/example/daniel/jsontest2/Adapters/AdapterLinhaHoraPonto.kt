@@ -29,7 +29,7 @@ class AdapterLinhaHoraPonto(val pontosFeed: PontosFeed) : RecyclerView.Adapter<L
 
         holder.itemView.txt_mlhp_pontoID.text = hlp.PontoID
         holder.itemView.txt_mlhp_ponto_end.text = "Endereço ponto, numero"
-        holder.itemView.txt_mlhp_ponto_prevChegada.text = "5 minutos"
+        holder.itemView.txt_mlhp_ponto_prevChegada.text = hlp.horaCalc
     }
 
 }

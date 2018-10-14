@@ -12,6 +12,7 @@ import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_lhp.*
 import okhttp3.*
 import java.io.IOException
+import java.text.SimpleDateFormat
 import java.util.*
 
 class LinhaPontoHoraActivity : AppCompatActivity() {
@@ -74,26 +75,9 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
             private fun encontraHora(pontosFeed: PontosFeed?): PontosFeed? {
                 var i = 0
                 val calendario = Calendar.getInstance()
-                val horaCalculada = calendario
+                val horaCalculada = Calendar.getInstance()
                 val intervaloMinutos = 10
-
-//
-//                val diaSemana = Calendar.getInstance().get(Calendar.DAY_OF_WEEK) //dia da semana int
-//                val diaMes = Calendar.getInstance().get(Calendar.DATE)  //dia do mes int
-//                val horaDia = Calendar.getInstance().get(Calendar.HOUR_OF_DAY) //hora atual int
-//                val minutoDia = Calendar.getInstance().get(Calendar.MINUTE) //hora atual int
-//                val teste2 = calendario
-//                val teste3 = calendario
-
-                //gera uma data
-//                teste3.set(calendario.get(Calendar.YEAR),calendario.get(Calendar.MONTH),calendario.get(Calendar.DATE), 0,0,0)
-//                println("teste3: "+teste3.time)
-
-                //ADIÇÃO DE INTERVALO
-//                println("teste: "+calendario.time)
-//                teste2.add(Calendar.MINUTE, 5)
-
-                //              println("teste2: "+teste2)
+                var encontrei = false
 
                 //deleta todas as linhas != daquela selecionada
                 while (i < pontosFeed!!.horaLinha.count() - 1) {
@@ -131,32 +115,48 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
                 // i= hora inicial da linha
                 // j= ponto inicial da linha
                 i = 0
-                while (i < pontosFeed.horaLinha.count() - 1) {
+                var token = false
+                while (i < pontosFeed.horaLinha.count() - 1 && !encontrei) {
+                    var hora = pontosFeed.horaLinha.get(i).Hora.substring(0, 2)
+                    var minuto = pontosFeed.horaLinha.get(i).Hora.substring(pontosFeed.horaLinha.get(i).Hora.length - 2, pontosFeed.horaLinha.get(i).Hora.length)
                     var j = 1
-                    var minuto = pontosFeed.horaLinha.get(i).Hora.substring(0, 2)
-                    var hora = pontosFeed.horaLinha.get(i).Hora.substring(pontosFeed.horaLinha.get(i).Hora.length - 2, pontosFeed.horaLinha.get(i).Hora.length)
-                    var token = false
-
-                    //cria a DataHora em função da primeira hora registrada
-                    horaCalculada.set(calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DATE), Integer.valueOf(hora), Integer.valueOf(minuto), 0)
-
-                    //seta a primeira hora
-                    pontosFeed.horaLinhaPontos.get(0).horaCalc = horaCalculada.time.toString()
-
-                    println(horaCalculada.time)
 
                     //varredura dos pontos da linha
-                    while (j < pontosFeed.horaLinhaPontos.count() && !token) {
-                        horaCalculada.add(Calendar.MINUTE, intervaloMinutos)
-                        pontosFeed.horaLinhaPontos.get(j).horaCalc = horaCalculada.time.toString()
+                    if (token == false) {
+                        //cria a DataHora em função da primeira hora registrada
+                        horaCalculada.set(calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DATE), Integer.valueOf(hora), Integer.valueOf(minuto), 0)
 
-                        //calcula pelo intervalo
-                        if (pontosFeed.horaLinhaPontos.get(j).PontoID == pontoSelecionado) {
-                            if (calendario.time > horaCalculada.time) {
-                                token = true
+                        println("horaCalc: " + SimpleDateFormat("dd/MM HH:mm:ss").format(horaCalculada.time))
+
+                        //seta a primeira hora
+                        pontosFeed.horaLinhaPontos.get(0).horaCalc = SimpleDateFormat("dd/MM HH:mm:ss").format(horaCalculada.time)
+
+
+                        while (j < pontosFeed.horaLinhaPontos.count()) {
+//                            println("Calendario ANTES: "+(calendario.timeInMillis))
+//                            println("HoraLinhaPontosCalc ANTES: "+(horaCalculada.time))
+                            horaCalculada.add(Calendar.MINUTE, intervaloMinutos)
+//                            println("HoraLinhaPontosCalc DEPOIS: "+(horaCalculada.time))
+//                            println("Calendario DEPOIS: "+(calendario.timeInMillis))
+
+                            pontosFeed.horaLinhaPontos.get(j).horaCalc = SimpleDateFormat("dd/MM HH:mm").format(horaCalculada.time)
+
+                            //calcula pelo intervalo
+                            if (pontosFeed.horaLinhaPontos.get(j).PontoID == pontoSelecionado) {
+
+                                if (calendario.time < horaCalculada.time) {
+                                    println("HoraComp1" + calendario.time)
+                                    println("HoraComp2" + horaCalculada.time)
+
+                                    token = true
+                                }
                             }
+                            j++
                         }
-                        j++
+                    }
+
+                    if (j == pontosFeed.horaLinhaPontos.count() && token) {
+                        encontrei = true
                     }
                     i++
                 }
