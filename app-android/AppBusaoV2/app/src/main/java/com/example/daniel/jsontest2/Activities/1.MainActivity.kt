@@ -1,6 +1,7 @@
 package com.example.daniel.jsontest2.Activities
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -13,7 +14,10 @@ import com.example.daniel.jsontest2.R
 import com.example.daniel.jsontest2.referencia.CourseActivity
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.activity_main.*
-import java.io.File
+import java.io.FileWriter
+import android.content.Context.MODE_PRIVATE
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -125,9 +129,24 @@ class MainActivity : AppCompatActivity() {
         println(filesDir)
         println(cacheDir)
 
+        val FILENAME = "hello_file.txt"
+        val string = "hello world!"
+
+        val fos = openFileOutput(FILENAME, Context.MODE_PRIVATE)
+        fos.write(string.toByteArray())
+        fos.close()
+
         //checando arquivos dentro da pasta
-        val file = File(filesDir, "teste.txt")
-        val conteudo = "FALA BRO"
+        try {
+            var fo = FileWriter("teste.txt", true)
+            fo.write("FALA BRO" + "\n")
+            fo.close()
+        } catch (e: Exception) {
+            println("Deu merds: " + e)
+        }
+
+        //ponto debug
+        print("")
 
     }
 
