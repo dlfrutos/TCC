@@ -3,16 +3,17 @@ package com.example.daniel.jsontest2.Activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.support.v4.app.ActivityCompat
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import com.example.daniel.jsontest2.R
 import com.example.daniel.jsontest2.referencia.CourseActivity
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,7 +50,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //checando permissão
+        //ROTINA VERIFICAÇÃO BANCO DE DADOS E ATUALIZAÇÃO
+        verificaJSON()
+
+        //VERIFICA PERMISSÃO DE UTILIZAÇÃO DO GPS
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
             ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
         } else {
@@ -101,12 +105,10 @@ class MainActivity : AppCompatActivity() {
             intent1.putExtra(LOC_LON, LONGITUDE)
             startActivity(intent1)
         }
-
         btn_TesteCourses.setOnClickListener() {
             val intent2 = Intent(this, CourseActivity::class.java)
             startActivity(intent2)
         }
-
         btn_ListaPontos.setOnClickListener() {
             val intent3 = Intent(this, ListaPontoActivity::class.java)
             startActivity(intent3)
@@ -115,6 +117,17 @@ class MainActivity : AppCompatActivity() {
             val intent4 = Intent(this, ListaLinhaActivity::class.java)
             startActivity(intent4)
         }
+
+    }
+
+    private fun verificaJSON() {
+        //checando endereços de arquivos internos + cache
+        println(filesDir)
+        println(cacheDir)
+
+        //checando arquivos dentro da pasta
+        val file = File(filesDir, "teste.txt")
+        val conteudo = "FALA BRO"
 
     }
 
@@ -128,11 +141,10 @@ class MainActivity : AppCompatActivity() {
                 txt_Location_Longitude.text = "Longitude:  " + location?.longitude.toString()
                 LATITUDE = location?.latitude.toString()
                 LONGITUDE = location?.longitude.toString()
-                btn_BuscaPontoMaisProximo.isEnabled =true
+                btn_BuscaPontoMaisProximo.isEnabled = true
             }
         }
     }
-
 
     @SuppressLint("RestrictedApi")
     fun buildLocationRequest() {

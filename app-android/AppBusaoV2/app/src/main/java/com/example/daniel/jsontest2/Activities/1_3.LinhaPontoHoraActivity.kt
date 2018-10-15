@@ -41,7 +41,6 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
         val client = OkHttpClient()
 
         client.newCall(request).enqueue(object : Callback {
-
             override fun onFailure(call: Call, e: IOException) {
                 println("Falha na requisição")
             }
@@ -65,7 +64,6 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
                 //filtro linha, hora e ponto
                 // e rotina de calculo da previsão de chegada
                 val pontosFeed2 = encontraHora(pontosFeed)
-
 
                 runOnUiThread {
                     recyclerView_lhp.adapter = AdapterLinhaHoraPonto(pontosFeed2!!)
@@ -110,7 +108,6 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
                     i++
                 }
 
-
                 //populando com horarios os ponstos da linha selecionada
                 // i= hora inicial da linha
                 // j= ponto inicial da linha
@@ -123,44 +120,33 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
 
                     //varredura dos pontos da linha
                     if (token == false) {
+
                         //cria a DataHora em função da primeira hora registrada
                         horaCalculada.set(calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DATE), Integer.valueOf(hora), Integer.valueOf(minuto), 0)
-
-                        println("horaCalc: " + SimpleDateFormat("dd/MM HH:mm:ss").format(horaCalculada.time))
 
                         //seta a primeira hora
                         pontosFeed.horaLinhaPontos.get(0).horaCalc = SimpleDateFormat("dd/MM HH:mm:ss").format(horaCalculada.time)
 
-
                         while (j < pontosFeed.horaLinhaPontos.count()) {
-//                            println("Calendario ANTES: "+(calendario.timeInMillis))
-//                            println("HoraLinhaPontosCalc ANTES: "+(horaCalculada.time))
                             horaCalculada.add(Calendar.MINUTE, intervaloMinutos)
-//                            println("HoraLinhaPontosCalc DEPOIS: "+(horaCalculada.time))
-//                            println("Calendario DEPOIS: "+(calendario.timeInMillis))
-
                             pontosFeed.horaLinhaPontos.get(j).horaCalc = SimpleDateFormat("dd/MM HH:mm").format(horaCalculada.time)
 
                             //calcula pelo intervalo
                             if (pontosFeed.horaLinhaPontos.get(j).PontoID == pontoSelecionado) {
-
                                 if (calendario.time < horaCalculada.time) {
                                     println("HoraComp1" + calendario.time)
                                     println("HoraComp2" + horaCalculada.time)
-
                                     token = true
                                 }
                             }
                             j++
                         }
                     }
-
                     if (j == pontosFeed.horaLinhaPontos.count() && token) {
                         encontrei = true
                     }
                     i++
                 }
-
                 return pontosFeed
             }
         })
