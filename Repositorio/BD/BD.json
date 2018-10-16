@@ -1,4 +1,10 @@
 {
+  "versao": {
+	"DataHora":"2018/10/16 14:30",
+	"ID":"1.0",
+	"OBS":"App em fase teste Alpha.",
+  },
+
   "pontos": [
 	{"PontoID": "Ponto A",
 		"Latitude":"10",
