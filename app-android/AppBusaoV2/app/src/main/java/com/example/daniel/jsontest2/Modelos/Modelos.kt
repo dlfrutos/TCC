@@ -3,7 +3,7 @@ package com.example.daniel.jsontest2.Modelos
 //AS CHAVES DEVEM SER IGUAIS nas listas !
 
 //lista MASTER
-class PontosFeed(val pontos: List<Pontos>, val linhas: MutableList<Linhas>, val horaLinha: MutableList<HoraLinha>, val horaLinhaPontos: MutableList<HoraLinhaPontos>)
+class PontosFeed(val pontos: List<Pontos>, val linhas: MutableList<Linhas>, val horaLinha: MutableList<HoraLinha>, val horaLinhaPontos: MutableList<HoraLinhaPontos>, val versao: Versao)
 
 //Lista de pontos
 class Pontos(var PontoID: String, var Latitude: String, var Longitude: String, var Distancia: Long)
@@ -20,6 +20,8 @@ class HoraLinha(var LinhaID: String, var RoteiroInicio: String, var RoteiroFim: 
 //Lista de pontos
 //Tabela de horários da linhas
 class HoraLinhaPontos(var LinhaID: String, var RoteiroInicio: String, var RoteiroFim: String, var PontoID: String, var Hora: String, var horaCalc: String)
+
+class Versao(var DataHora:String,var ID:String,var OBS:String )
 
 //{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","DiaSemana":"2, 3, 4, 5, 6","Hora":"6:05"},
 //Falta implementar: lista horários

@@ -4,22 +4,25 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.AssetManager
 import android.os.Bundle
-import android.os.Environment
 import android.os.Looper
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
+import com.example.daniel.jsontest2.Modelos.PontosFeed
 import com.example.daniel.jsontest2.R
 import com.example.daniel.jsontest2.referencia.CourseActivity
 import com.google.android.gms.location.*
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
+import okhttp3.*
 import java.io.File
 import java.io.FileWriter
-import java.io.InputStream
-import java.io.InputStreamReader
+import java.io.IOException
+import java.text.Format
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 class MainActivity : AppCompatActivity() {
@@ -57,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //ROTINA VERIFICAÇÃO BANCO DE DADOS E ATUALIZAÇÃO
-        verificaJSON()
+        verificaBD()
 
         //VERIFICA PERMISSÃO DE UTILIZAÇÃO DO GPS
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -150,45 +153,117 @@ class MainActivity : AppCompatActivity() {
         locationRequest.smallestDisplacement = 10F
     }
 
-    private fun verificaJSON() {
-        //checando endereços de arquivos internos + cache
-//        println(filesDir)
-//        println(cacheDir)
+    private fun verificaBD() {
+        //INICIALIAZAÇÃO DAS VARIÁVEIS
+        var BD_ORI = ""
+        var BD_NET = ""
+        var BD_BKP = ""
+        var BD = ""
 
+        var JSON_ORI: PontosFeed? = null
+        var JSON_NET: PontosFeed? = null
+        var JSON_BKP: PontosFeed? = null
+        var JSON_ATUAL: PontosFeed? = null
 
-        //
-        val novo =
+        val gson = GsonBuilder().create()
 
-        //ok funciona
-        //lendo arquivos do assets
-        Environment.getDataDirectory().absolutePath
-        val teste = assets.open("ListaPontosLinhas.json")
-        val dados = teste.bufferedReader().readText()
-        println("Leitura: "+ dados)
-        print("")
-
-        //ok funciona
-        val file = applicationContext.getFileStreamPath("ListaPontosLinhas.json")
-        println("Filepath: " + file.absolutePath)
-        print("")
-
-        //ok funciona
-        val FILENAME = "hello_file.txt"
-        val string = "hello world!"
-        val fos = openFileOutput(FILENAME, Context.MODE_PRIVATE)
-        fos.write(string.toByteArray())
-        fos.close()
-        //checando arquivos dentro da pasta
+        /**
+         * 1° PASSO
+         * *********
+         * Lê arquivo do ASSETS, cria uma String, transforma em JSON.
+         * Dados são aqueles usando na compilação do programa.
+         */
         try {
+            BD_ORI = assets.open("ListaPontosLinhas.json").bufferedReader().readText()
+            BD_ORI = BD_ORI.replace("\r", "")
+            BD_ORI = BD_ORI.replace("\t", "")
+            BD_ORI = BD_ORI.replace("\n", "")
+
+            JSON_ORI = gson.fromJson(BD_ORI, PontosFeed::class.java)
+
+        } catch (e: Exception) {
+        }
+
+        /**
+         * 2° PASSO
+         * *********
+         * Busca arquivo no site GITHUB,
+         * salva numa String,
+         * cria JSON.
+         */
+        try {
+            println("Attemp to fetch JSON PONTOS")
+            val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
+            val request = Request.Builder().url(url).build()
+            val client = OkHttpClient()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    println("Falha na requisição")
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    BD_NET = response.body()?.string().toString()
+
+                    //rotina para retirar \r\n
+                    BD_NET = BD_NET?.replace("\r", "")
+                    BD_NET = BD_NET?.replace("\n", "")
+                    BD_NET = BD_NET?.replace("\t", "")
+
+                    //construir objeto a partir do JSON
+                    println(BD_NET)
+                    JSON_NET = gson.fromJson(BD_NET, PontosFeed::class.java)
+                }
+            })
+        } catch (ex: Exception) {
+        }
+
+        /**
+         * 3° PASSO
+         * *********
+         * Verifica os arquivos que existem e suas versões.
+         */
+        try {
+//            var fin = FileReader("JSON_ATUAL.json")
+//            var c: Int?
+//            do {
+//                c = fin.read()
+//                BD = BD + c.toChar()
+//            } while (c != -1)
+
+//            var file = File("JSON_ATUAL.json")
+//            var a = file.isFile
+//            var b = file.exists()
+
+            if (JSON_NET == null){
+                //IMPLEMENTAÇÃO DA ROTINA PARA CONVERTER HORA
+            }
+
+            print("")
+
+        } catch (ex: java.lang.Exception) {
+        }
+
+
+        /**
+         * 4° PASSO
+         * *********
+         * Rotina de leituras e tualizações.
+         */
+        try {
+            val FILENAME = "hello_file.txt"
+            val string = "hello world!"
+            val fos = openFileOutput(FILENAME, Context.MODE_PRIVATE)
+            fos.write(string.toByteArray())
+            fos.close()
+
+            //checando arquivos dentro da pasta
             var fo = FileWriter("teste.txt", true)
             fo.write("FALA BRO" + "\n")
             fo.close()
-        } catch (e: Exception) {
-            println("Deu merds: " + e)
+            Toast.makeText(this, "Arquivo salvo.", Toast.LENGTH_SHORT)
+        } catch (ex: Exception) {
         }
-
-        //ponto debug
-        print("")
 
     }
 }

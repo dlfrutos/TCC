@@ -31,9 +31,10 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
         txt_buscapontos_latitude.setText("Latitude: " + intent.getStringExtra(MainActivity.LOC_LAT))
         txt_buscaponto_longitude.setText("Latitude: " + intent.getStringExtra(MainActivity.LOC_LON))
     }
+
     private fun fetchJsonPontos() {
         println("Attemp to fetch JSON PONTOS")
-        val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/ModelagemDB/ListaPontosLinhas.json"
+        val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
 
