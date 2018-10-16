@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.AssetManager
 import android.os.Bundle
+import android.os.Environment
 import android.os.Looper
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
@@ -14,9 +16,10 @@ import com.example.daniel.jsontest2.R
 import com.example.daniel.jsontest2.referencia.CourseActivity
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
 import java.io.FileWriter
-import android.content.Context.MODE_PRIVATE
-
+import java.io.InputStream
+import java.io.InputStreamReader
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         const val LOC_LAT = "loc_lat"
         const val LOC_LON = "loc_lon"
     }
-
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -124,32 +126,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun verificaJSON() {
-        //checando endereços de arquivos internos + cache
-        println(filesDir)
-        println(cacheDir)
-
-        val FILENAME = "hello_file.txt"
-        val string = "hello world!"
-
-        val fos = openFileOutput(FILENAME, Context.MODE_PRIVATE)
-        fos.write(string.toByteArray())
-        fos.close()
-
-        //checando arquivos dentro da pasta
-        try {
-            var fo = FileWriter("teste.txt", true)
-            fo.write("FALA BRO" + "\n")
-            fo.close()
-        } catch (e: Exception) {
-            println("Deu merds: " + e)
-        }
-
-        //ponto debug
-        print("")
-
-    }
-
     fun buildLocationCallback() {
         locationCallback = object : LocationCallback() {
             //control + O
@@ -174,4 +150,45 @@ class MainActivity : AppCompatActivity() {
         locationRequest.smallestDisplacement = 10F
     }
 
+    private fun verificaJSON() {
+        //checando endereços de arquivos internos + cache
+//        println(filesDir)
+//        println(cacheDir)
+
+
+        //
+        val novo =
+
+        //ok funciona
+        //lendo arquivos do assets
+        Environment.getDataDirectory().absolutePath
+        val teste = assets.open("ListaPontosLinhas.json")
+        val dados = teste.bufferedReader().readText()
+        println("Leitura: "+ dados)
+        print("")
+
+        //ok funciona
+        val file = applicationContext.getFileStreamPath("ListaPontosLinhas.json")
+        println("Filepath: " + file.absolutePath)
+        print("")
+
+        //ok funciona
+        val FILENAME = "hello_file.txt"
+        val string = "hello world!"
+        val fos = openFileOutput(FILENAME, Context.MODE_PRIVATE)
+        fos.write(string.toByteArray())
+        fos.close()
+        //checando arquivos dentro da pasta
+        try {
+            var fo = FileWriter("teste.txt", true)
+            fo.write("FALA BRO" + "\n")
+            fo.close()
+        } catch (e: Exception) {
+            println("Deu merds: " + e)
+        }
+
+        //ponto debug
+        print("")
+
+    }
 }
