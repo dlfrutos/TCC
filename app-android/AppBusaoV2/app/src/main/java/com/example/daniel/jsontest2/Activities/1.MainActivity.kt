@@ -17,12 +17,9 @@ import com.google.android.gms.location.*
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
-import java.io.File
-import java.io.FileWriter
+import java.io.FileReader
 import java.io.IOException
-import java.text.Format
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,24 +32,13 @@ class MainActivity : AppCompatActivity() {
     var LONGITUDE = ""
     val REQUEST_CODE = 1000
 
+    var BD_NET = ""
+    var JSON_NET: PontosFeed? = null
+
     companion object {
         const val LOC_LAT = "loc_lat"
         const val LOC_LON = "loc_lon"
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            REQUEST_CODE -> {
-                if (grantResults.size > 0) {
-                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                        Toast.makeText(this@MainActivity, "PERMISSION GRANTED", Toast.LENGTH_SHORT)
-                    } else {
-                        Toast.makeText(this@MainActivity, "PERMISSION DENIED", Toast.LENGTH_SHORT)
-                    }
-                }
-            }
-        }
+        var JSON_ATUAL: PontosFeed? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +46,34 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //ROTINA VERIFICAÇÃO BANCO DE DADOS E ATUALIZAÇÃO
-        verificaBD()
+        println("Attemp to fetch JSON PONTOS")
+        val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
+        val request = Request.Builder().url(url).build()
+        val client = OkHttpClient()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                println("Falha na requisição")
+                //já inicializado a variável como null
+
+                verificaBD()
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                //lendo a página
+                BD_NET = response.body()?.string().toString()
+
+                //rotina para retirar \r\n
+                BD_NET = BD_NET?.replace("\r", "")
+                BD_NET = BD_NET?.replace("\n", "")
+                BD_NET = BD_NET?.replace("\t", "")
+
+                //construir objeto a partir do JSON
+                JSON_NET = GsonBuilder().create().fromJson(BD_NET, PontosFeed::class.java)
+
+                verificaBD()
+            }
+        })
 
         //VERIFICA PERMISSÃO DE UTILIZAÇÃO DO GPS
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -112,6 +125,7 @@ class MainActivity : AppCompatActivity() {
             val intent1 = Intent(this, ListaPontoMaisProximoActivity::class.java)
             intent1.putExtra(LOC_LAT, LATITUDE)
             intent1.putExtra(LOC_LON, LONGITUDE)
+
             startActivity(intent1)
         }
         btn_TesteCourses.setOnClickListener() {
@@ -127,6 +141,171 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent4)
         }
 
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            REQUEST_CODE -> {
+                if (grantResults.size > 0) {
+                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(this@MainActivity, "PERMISSION GRANTED", Toast.LENGTH_SHORT)
+                    } else {
+                        Toast.makeText(this@MainActivity, "PERMISSION DENIED", Toast.LENGTH_SHORT)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun verificaBD() {
+        //INICIALIAZAÇÃO DAS VARIÁVEIS
+        var BD_ORI = ""
+        var BD_ATUAL = ""
+        var JSON_ORI: PontosFeed? = null
+        // var JSON_ATUAL: PontosFeed? = null
+        val gson = GsonBuilder().create()
+
+        /**
+         * 1° PASSO
+         * *********
+         * Lê arquivo do ASSETS, cria uma String, transforma em JSON.
+         * Dados são aqueles usando na compilação do programa.
+         */
+        try {
+            BD_ORI = assets.open("BD.json").bufferedReader().readText()
+            BD_ORI = BD_ORI.replace("\r", "")
+            BD_ORI = BD_ORI.replace("\t", "")
+            BD_ORI = BD_ORI.replace("\n", "")
+            JSON_ORI = gson.fromJson(BD_ORI, PontosFeed::class.java)
+        } catch (e: Exception) {
+        }
+
+        /**
+         * 2° PASSO
+         * *********
+         * Verifica os arquivos que existem e suas versões.
+         * Mantem a versão atual na mais recente.
+         */
+        try {
+            //LÊ JSON ATUAL se existir
+            var fr = FileReader("JSON_ATUAL.json")
+
+            var c: Int?
+            do {
+                c = fr.read()
+                BD_ATUAL = BD_ATUAL + c.toChar()
+            } while (c != -1)
+
+            //rotina para retirar \r\n
+            BD_ATUAL = BD_ATUAL?.replace("\r", "")
+            BD_ATUAL = BD_ATUAL?.replace("\n", "")
+            BD_ATUAL = BD_ATUAL?.replace("\t", "")
+
+            //construir objeto a partir do JSON
+            JSON_ATUAL = gson.fromJson(BD_ATUAL, PontosFeed::class.java)
+        } catch (ex: Exception) {
+        }
+
+        //caso não tenha internet
+        if (JSON_NET == null) {
+            //criamos uma instância para trabalhar com data
+            val c = Calendar.getInstance()
+
+            //cria a versão data BKP
+            println("test: " + (JSON_ORI?.versao?.DataHora)?.substring(14, 15))
+            println("test: " + (JSON_ORI?.versao?.DataHora)?.substring(14, 16))
+
+            var ano = (JSON_ORI?.versao?.DataHora)?.substring(0, 4)?.toInt()
+            var mes = (JSON_ORI?.versao?.DataHora)?.substring(5, 7)?.toInt()
+            var dia = (JSON_ORI?.versao?.DataHora)?.substring(8, 10)?.toInt()
+            var hora = (JSON_ORI?.versao?.DataHora)?.substring(11, 13)?.toInt()
+            var minuto = (JSON_ORI?.versao?.DataHora)?.substring(15, 16)?.toInt()
+            c.set(ano!!, mes!!, dia!!, hora!!, 0, 0)
+            val v_bkp = c
+
+            //caso não tenhamos um JSON atual criado no aparelho
+            if (JSON_ATUAL == null) {
+                JSON_ATUAL = JSON_ORI
+            }
+
+            //caso tenhamos o JSON atual
+            else {
+                //cria a versão data ATUAL
+                ano = (JSON_ATUAL?.versao?.DataHora)?.substring(2, 5)?.toInt()
+                mes = (JSON_ATUAL?.versao?.DataHora)?.substring(7, 8)?.toInt()
+                dia = (JSON_ATUAL?.versao?.DataHora)?.substring(10, 11)?.toInt()
+                hora = (JSON_ATUAL?.versao?.DataHora)?.substring(13, 14)?.toInt()
+                minuto = (JSON_ATUAL?.versao?.DataHora)?.substring(14, 16)?.toInt()
+                c.set(ano!!, mes!!, dia!!, hora!!, minuto!!, 0)
+                val v_atual = c
+
+                if (v_atual.timeInMillis > v_bkp.timeInMillis) {
+                } else {
+                    JSON_ATUAL = JSON_ORI
+                }
+            }
+        }
+
+        //se tivermos internet
+        else if (JSON_ORI?.versao != null) {
+            val c = Calendar.getInstance()
+            //cria a versão data BKP
+            var ano = (JSON_ORI?.versao?.DataHora)?.substring(0, 4)?.toInt()
+            var mes = (JSON_ORI?.versao?.DataHora)?.substring(5, 7)?.toInt()
+            var dia = (JSON_ORI?.versao?.DataHora)?.substring(8, 10)?.toInt()
+            var hora = (JSON_ORI?.versao?.DataHora)?.substring(11, 13)?.toInt()
+            var minuto = (JSON_ORI?.versao?.DataHora)?.substring(14, 16)?.toInt()
+            c.set(ano!!, mes!!, dia!!, hora!!, minuto!!, 0)
+            val v_bkp = c
+
+            //cria a versão data ATUAL
+            ano = (JSON_ATUAL?.versao?.DataHora)?.substring(0, 4)?.toInt()!!
+            mes = (JSON_ATUAL?.versao?.DataHora)?.substring(5, 7)?.toInt()!!
+            dia = (JSON_ATUAL?.versao?.DataHora)?.substring(8, 10)?.toInt()!!
+            hora = (JSON_ATUAL?.versao?.DataHora)?.substring(11, 13)?.toInt()!!
+            minuto = (JSON_ATUAL?.versao?.DataHora)?.substring(14, 16)?.toInt()!!
+            c.set(ano!!, mes!!, dia!!, hora!!, minuto!!, 0)
+            val v_atual = c
+
+            //cria a versão data ATUAL
+            ano = (JSON_NET?.versao?.DataHora)?.substring(0, 4)?.toInt()!!
+            mes = (JSON_NET?.versao?.DataHora)?.substring(5, 7)?.toInt()!!
+            dia = (JSON_NET?.versao?.DataHora)?.substring(8, 10)?.toInt()!!
+            hora = (JSON_NET?.versao?.DataHora)?.substring(11, 13)?.toInt()!!
+            minuto = (JSON_NET?.versao?.DataHora)?.substring(14, 16)?.toInt()!!
+            c.set(ano!!, mes!!, dia!!, hora!!, minuto!!, 0)
+            val v_net = c
+
+            if (v_net.timeInMillis > v_atual.timeInMillis && v_net.timeInMillis > v_atual.timeInMillis) {
+                JSON_ATUAL = JSON_NET
+            } else if (v_bkp > v_atual) {
+                JSON_ATUAL = JSON_ORI
+            }
+        } else {
+            JSON_ATUAL = JSON_ORI
+        }
+
+
+        /**
+         * 3° PASSO
+         * *********
+         * Escreve a versão final na memoria interna
+         */
+        try {
+            val FILENAME = "JSON_ATUAL.json"
+//            val string = JSON_ATUAL.toString()
+            val fos = openFileOutput(FILENAME, Context.MODE_PRIVATE)
+            fos.write(JSON_ATUAL.toString().toByteArray())
+            fos.close()
+
+            //checando arquivos dentro da pasta
+//            var fo = FileWriter(FILENAME, true)
+//            fo.write(string)
+//            fo.close()
+            Toast.makeText(this, "Arquivo salvo.", Toast.LENGTH_SHORT)
+        } catch (ex: Exception) {
+        }
     }
 
     fun buildLocationCallback() {
@@ -151,119 +330,5 @@ class MainActivity : AppCompatActivity() {
         locationRequest.interval = 3000
         locationRequest.fastestInterval = 1000
         locationRequest.smallestDisplacement = 10F
-    }
-
-    private fun verificaBD() {
-        //INICIALIAZAÇÃO DAS VARIÁVEIS
-        var BD_ORI = ""
-        var BD_NET = ""
-        var BD_BKP = ""
-        var BD = ""
-
-        var JSON_ORI: PontosFeed? = null
-        var JSON_NET: PontosFeed? = null
-        var JSON_BKP: PontosFeed? = null
-        var JSON_ATUAL: PontosFeed? = null
-
-        val gson = GsonBuilder().create()
-
-        /**
-         * 1° PASSO
-         * *********
-         * Lê arquivo do ASSETS, cria uma String, transforma em JSON.
-         * Dados são aqueles usando na compilação do programa.
-         */
-        try {
-            BD_ORI = assets.open("ListaPontosLinhas.json").bufferedReader().readText()
-            BD_ORI = BD_ORI.replace("\r", "")
-            BD_ORI = BD_ORI.replace("\t", "")
-            BD_ORI = BD_ORI.replace("\n", "")
-
-            JSON_ORI = gson.fromJson(BD_ORI, PontosFeed::class.java)
-
-        } catch (e: Exception) {
-        }
-
-        /**
-         * 2° PASSO
-         * *********
-         * Busca arquivo no site GITHUB,
-         * salva numa String,
-         * cria JSON.
-         */
-        try {
-            println("Attemp to fetch JSON PONTOS")
-            val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
-            val request = Request.Builder().url(url).build()
-            val client = OkHttpClient()
-
-            client.newCall(request).enqueue(object : Callback {
-                override fun onFailure(call: Call, e: IOException) {
-                    println("Falha na requisição")
-                }
-
-                override fun onResponse(call: Call, response: Response) {
-                    BD_NET = response.body()?.string().toString()
-
-                    //rotina para retirar \r\n
-                    BD_NET = BD_NET?.replace("\r", "")
-                    BD_NET = BD_NET?.replace("\n", "")
-                    BD_NET = BD_NET?.replace("\t", "")
-
-                    //construir objeto a partir do JSON
-                    println(BD_NET)
-                    JSON_NET = gson.fromJson(BD_NET, PontosFeed::class.java)
-                }
-            })
-        } catch (ex: Exception) {
-        }
-
-        /**
-         * 3° PASSO
-         * *********
-         * Verifica os arquivos que existem e suas versões.
-         */
-        try {
-//            var fin = FileReader("JSON_ATUAL.json")
-//            var c: Int?
-//            do {
-//                c = fin.read()
-//                BD = BD + c.toChar()
-//            } while (c != -1)
-
-//            var file = File("JSON_ATUAL.json")
-//            var a = file.isFile
-//            var b = file.exists()
-
-            if (JSON_NET == null){
-                //IMPLEMENTAÇÃO DA ROTINA PARA CONVERTER HORA
-            }
-
-            print("")
-
-        } catch (ex: java.lang.Exception) {
-        }
-
-
-        /**
-         * 4° PASSO
-         * *********
-         * Rotina de leituras e tualizações.
-         */
-        try {
-            val FILENAME = "hello_file.txt"
-            val string = "hello world!"
-            val fos = openFileOutput(FILENAME, Context.MODE_PRIVATE)
-            fos.write(string.toByteArray())
-            fos.close()
-
-            //checando arquivos dentro da pasta
-            var fo = FileWriter("teste.txt", true)
-            fo.write("FALA BRO" + "\n")
-            fo.close()
-            Toast.makeText(this, "Arquivo salvo.", Toast.LENGTH_SHORT)
-        } catch (ex: Exception) {
-        }
-
     }
 }

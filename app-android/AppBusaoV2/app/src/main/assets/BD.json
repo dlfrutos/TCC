@@ -1,59 +1,65 @@
 {
-  "pontos": [
-	{"PontoID": "Ponto A",
-		"Latitude":"10",
-		"Longitude":"20"
+	"versao": {
+		"DataHora":"2018/10/16 06:30",
+		"ID":"1.0",
+		"OBS":"App em fase teste Alpha."
 	},
-	
-    {"PontoID": "Ponto B",
-		"Latitude":"15",
-		"Longitude":"25"
-	},
-    
-	{"PontoID": "Ponto C",
-		"Latitude": "-10",
-		"Longitude": "-20"
-	},
-	
-	{"PontoID": "Ponto D",
-		"Latitude":"-5",
-		"Longitude":"5"
-	},
-	{
-	"PontoID": "Ponto E",
-		"Latitude":"-5",
-		"Longitude":"0"
-	},
-	{"PontoID": "Ponto F",
-		"Latitude":"-5",
-		"Longitude":"10"
-	}
-  ],
-  
-  "linhas":[
-	  {"LinhaID":"Aparecida",
-	  "RoteiroInicio":"Terminal urbano",
-	  "RoteiroFim":"Bairro Aparecida",
-	  "RoteiroPontos":"Ponto A, Ponto B, Ponto C"
-	  },
-	  {"LinhaID":"Cohab I",
-	  "RoteiroInicio":"Terminal urbano",
-	  "RoteiroFim":"Bairro Cohab I",
-	  "RoteiroPontos":"Ponto B, Ponto C, Ponto D"
-	  },
-	  {"LinhaID":"Cohab II",
-	  "RoteiroInicio":"Terminal Urbano",
-	  "RoteiroFim":"Bairro Cohab II",
-	  "RoteiroPontos":"Ponto D, Ponto E, Ponto F"
-	  },
-	  {"LinhaID":"Jardim Esperança",
-	  "RoteiroInicio":"Terminal Urbano",
-	  "RoteiroFim":"Bairro Jardim Esperança",
-	  "RoteiroPontos":"Ponto F, Ponto A, Ponto B"
-	  }
-  ],
-  
-  "horaLinha":[
+
+	"pontos": [
+		{"PontoID": "Ponto A",
+			"Latitude":"10",
+			"Longitude":"20"
+		},
+
+		{"PontoID": "Ponto B",
+			"Latitude":"15",
+			"Longitude":"25"
+		},
+
+		{"PontoID": "Ponto C",
+			"Latitude": "-10",
+			"Longitude": "-20"
+		},
+
+		{"PontoID": "Ponto D",
+			"Latitude":"-5",
+			"Longitude":"5"
+		},
+		{
+			"PontoID": "Ponto E",
+			"Latitude":"-5",
+			"Longitude":"0"
+		},
+		{"PontoID": "Ponto F",
+			"Latitude":"-5",
+			"Longitude":"10"
+		}
+	],
+
+	"linhas":[
+		{"LinhaID":"Aparecida",
+			"RoteiroInicio":"Terminal urbano",
+			"RoteiroFim":"Bairro Aparecida",
+			"RoteiroPontos":"Ponto A, Ponto B, Ponto C"
+		},
+		{"LinhaID":"Cohab I",
+			"RoteiroInicio":"Terminal urbano",
+			"RoteiroFim":"Bairro Cohab I",
+			"RoteiroPontos":"Ponto B, Ponto C, Ponto D"
+		},
+		{"LinhaID":"Cohab II",
+			"RoteiroInicio":"Terminal Urbano",
+			"RoteiroFim":"Bairro Cohab II",
+			"RoteiroPontos":"Ponto D, Ponto E, Ponto F"
+		},
+		{"LinhaID":"Jardim Esperança",
+			"RoteiroInicio":"Terminal Urbano",
+			"RoteiroFim":"Bairro Jardim Esperança",
+			"RoteiroPontos":"Ponto F, Ponto A, Ponto B"
+		}
+	],
+
+	"horaLinha":[
 		{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","DiaSemana":"2, 3, 4, 5, 6","Hora":"06:05"},
 		{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","DiaSemana":"2, 3, 4, 5, 6","Hora":"07:05"},
 		{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","DiaSemana":"2, 3, 4, 5, 6","Hora":"08:05"},
@@ -182,17 +188,17 @@
 		{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","DiaSemana":"0, 1","Hora":"15:00"},
 		{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","DiaSemana":"0, 1","Hora":"16:00"},
 		{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","DiaSemana":"0, 1","Hora":"17:00"}
-  ],
-  
-  "horaLinhaPontos":[
-	{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","PontoID":"Ponto A"},
-	{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","PontoID":"Ponto C"},
-	{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","PontoID":"Ponto D"},
-	{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","PontoID":"Ponto B"},
-	{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","PontoID":"Ponto E"},
-	{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","PontoID":"Terminal Urbano"},
-	{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","PontoID":"Ponto E"},
-	{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","PontoID":"Ponto C"},
-	{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","PontoID":"Bairro Cohab I"}
-  ]
+	],
+
+	"horaLinhaPontos":[
+		{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","PontoID":"Ponto A"},
+		{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","PontoID":"Ponto C"},
+		{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","PontoID":"Ponto D"},
+		{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","PontoID":"Ponto B"},
+		{"LinhaID":"Cohab II","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab II","PontoID":"Ponto E"},
+		{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","PontoID":"Terminal Urbano"},
+		{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","PontoID":"Ponto E"},
+		{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","PontoID":"Ponto C"},
+		{"LinhaID":"Cohab I","RoteiroInicio":"Terminal Urbano","RoteiroFim":"Bairro Cohab I","PontoID":"Bairro Cohab I"}
+	]
 }
