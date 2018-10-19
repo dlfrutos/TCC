@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.daniel.jsontest2.Activities.LinhaPontoActivity
 import com.example.daniel.jsontest2.Activities.ListaPontoMaisProximoActivity.Companion.PONTO_SELECIONADO
+import com.example.daniel.jsontest2.Activities.MainActivity
 import com.example.daniel.jsontest2.Modelos.Pontos
 import com.example.daniel.jsontest2.Modelos.PontosFeed
 import com.example.daniel.jsontest2.R

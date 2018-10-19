@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         const val LOC_LAT = "loc_lat"
         const val LOC_LON = "loc_lon"
         var JSON_ATUAL: PontosFeed? = null
+        lateinit var sb:String
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -163,7 +164,6 @@ class MainActivity : AppCompatActivity() {
         var BD_ORI = ""
         var BD_ATUAL = ""
         var JSON_ORI: PontosFeed? = null
-        // var JSON_ATUAL: PontosFeed? = null
         val gson = GsonBuilder().create()
 
         /**
@@ -201,6 +201,7 @@ class MainActivity : AppCompatActivity() {
             BD_ATUAL = BD_ATUAL?.replace("\r", "")
             BD_ATUAL = BD_ATUAL?.replace("\n", "")
             BD_ATUAL = BD_ATUAL?.replace("\t", "")
+            sb= BD_ATUAL
 
             //construir objeto a partir do JSON
             JSON_ATUAL = gson.fromJson(BD_ATUAL, PontosFeed::class.java)
@@ -227,6 +228,7 @@ class MainActivity : AppCompatActivity() {
             //caso não tenhamos um JSON atual criado no aparelho
             if (JSON_ATUAL == null) {
                 JSON_ATUAL = JSON_ORI
+                sb = BD_ORI
             }
 
             //caso tenhamos o JSON atual
@@ -243,30 +245,35 @@ class MainActivity : AppCompatActivity() {
                 if (v_atual.timeInMillis > v_bkp.timeInMillis) {
                 } else {
                     JSON_ATUAL = JSON_ORI
+                    sb = BD_ORI
                 }
             }
         }
 
         //se tivermos internet
         else if (JSON_ORI?.versao != null) {
-            val c = Calendar.getInstance()
             //cria a versão data BKP
             var ano = (JSON_ORI?.versao?.DataHora)?.substring(0, 4)?.toInt()
             var mes = (JSON_ORI?.versao?.DataHora)?.substring(5, 7)?.toInt()
             var dia = (JSON_ORI?.versao?.DataHora)?.substring(8, 10)?.toInt()
             var hora = (JSON_ORI?.versao?.DataHora)?.substring(11, 13)?.toInt()
             var minuto = (JSON_ORI?.versao?.DataHora)?.substring(14, 16)?.toInt()
-            c.set(ano!!, mes!!, dia!!, hora!!, minuto!!, 0)
-            val v_bkp = c
+            val v_bkp = Calendar.getInstance()
+            v_bkp.set(ano!!, mes!!, dia!!, hora!!, minuto!!, 0)
 
-            //cria a versão data ATUAL
-            ano = (JSON_ATUAL?.versao?.DataHora)?.substring(0, 4)?.toInt()!!
-            mes = (JSON_ATUAL?.versao?.DataHora)?.substring(5, 7)?.toInt()!!
-            dia = (JSON_ATUAL?.versao?.DataHora)?.substring(8, 10)?.toInt()!!
-            hora = (JSON_ATUAL?.versao?.DataHora)?.substring(11, 13)?.toInt()!!
-            minuto = (JSON_ATUAL?.versao?.DataHora)?.substring(14, 16)?.toInt()!!
-            c.set(ano!!, mes!!, dia!!, hora!!, minuto!!, 0)
-            val v_atual = c
+            val v_atual = Calendar.getInstance()
+            v_atual.set(0, 0, 0, 0, 0)
+
+            if (JSON_ATUAL != null) {
+                //cria a versão data ATUAL
+                ano = (JSON_ATUAL?.versao?.DataHora)?.substring(0, 4)?.toInt()!!
+                mes = (JSON_ATUAL?.versao?.DataHora)?.substring(5, 7)?.toInt()!!
+                dia = (JSON_ATUAL?.versao?.DataHora)?.substring(8, 10)?.toInt()!!
+                hora = (JSON_ATUAL?.versao?.DataHora)?.substring(11, 13)?.toInt()!!
+                minuto = (JSON_ATUAL?.versao?.DataHora)?.substring(14, 16)?.toInt()!!
+                v_atual.set(ano!!, mes!!, dia!!, hora!!, minuto!!, 0)
+
+            }
 
             //cria a versão data ATUAL
             ano = (JSON_NET?.versao?.DataHora)?.substring(0, 4)?.toInt()!!
@@ -274,16 +281,17 @@ class MainActivity : AppCompatActivity() {
             dia = (JSON_NET?.versao?.DataHora)?.substring(8, 10)?.toInt()!!
             hora = (JSON_NET?.versao?.DataHora)?.substring(11, 13)?.toInt()!!
             minuto = (JSON_NET?.versao?.DataHora)?.substring(14, 16)?.toInt()!!
-            c.set(ano!!, mes!!, dia!!, hora!!, minuto!!, 0)
-            val v_net = c
+            val v_net = Calendar.getInstance()
+            v_net.set(ano!!, mes!!, dia!!, hora!!, minuto!!, 0)
 
-            if (v_net.timeInMillis > v_atual.timeInMillis && v_net.timeInMillis > v_atual.timeInMillis) {
+
+            if (v_net.timeInMillis > v_atual.timeInMillis && v_net.timeInMillis > v_bkp.timeInMillis) {
                 JSON_ATUAL = JSON_NET
-            } else if (v_bkp > v_atual) {
+                sb = BD_NET
+            } else if (v_bkp.timeInMillis > v_atual.timeInMillis) {
                 JSON_ATUAL = JSON_ORI
+                sb = BD_ORI
             }
-        } else {
-            JSON_ATUAL = JSON_ORI
         }
 
 
@@ -303,7 +311,7 @@ class MainActivity : AppCompatActivity() {
 //            var fo = FileWriter(FILENAME, true)
 //            fo.write(string)
 //            fo.close()
-            Toast.makeText(this, "Arquivo salvo.", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "Arquivo salvo.", Toast.LENGTH_SHORT).show()
         } catch (ex: Exception) {
         }
     }

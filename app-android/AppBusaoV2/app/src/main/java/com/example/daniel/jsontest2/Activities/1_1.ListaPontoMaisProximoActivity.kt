@@ -17,7 +17,7 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 class ListaPontoMaisProximoActivity : AppCompatActivity() {
-    var JSON_ATUAL: PontosFeed? = null
+     var JSON_ATUAL: PontosFeed? =MainActivity.JSON_ATUAL
 
     companion object {
         val PONTO_SELECIONADO = "Ponto_Selecionado"
@@ -28,7 +28,6 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lista_ponto_mais_proximo)
         recyclerView_lista_pontos_proximos.layoutManager = LinearLayoutManager(this)
 
-        JSON_ATUAL = MainActivity.JSON_ATUAL
         calculaDistancia()
         //ordenaPorDistancia(JSON_ATUAL)
         //fetchJsonPontos()
