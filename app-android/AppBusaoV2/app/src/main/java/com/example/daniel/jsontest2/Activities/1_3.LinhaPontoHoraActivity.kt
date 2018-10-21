@@ -99,7 +99,9 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
                 pontosFeed.horaLinhaPontos.get(0).horaCalc = SimpleDateFormat("dd/MM HH:mm:ss").format(horaCalculada.time)
 
                 while (j < pontosFeed.horaLinhaPontos.count()) {
-                    horaCalculada.add(Calendar.MINUTE, intervaloMinutos)
+                    horaCalculada.add(Calendar.MINUTE, pontosFeed.horaLinhaPontos.get(j).IntervaloMin)
+                    horaCalculada.add(Calendar.SECOND, pontosFeed.horaLinhaPontos.get(j).IntervaloSeg)
+
                     pontosFeed.horaLinhaPontos.get(j).horaCalc = SimpleDateFormat("dd/MM HH:mm").format(horaCalculada.time)
 
                     //calcula pelo intervalo

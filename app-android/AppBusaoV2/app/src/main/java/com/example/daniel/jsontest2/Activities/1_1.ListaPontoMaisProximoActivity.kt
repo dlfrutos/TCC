@@ -12,12 +12,10 @@ import okhttp3.*
 import java.io.File
 import java.io.FileReader
 import java.io.IOException
-import kotlin.math.acos
-import kotlin.math.cos
-import kotlin.math.sin
+import kotlin.math.*
 
 class ListaPontoMaisProximoActivity : AppCompatActivity() {
-     var JSON_ATUAL: PontosFeed? =MainActivity.JSON_ATUAL
+    var JSON_ATUAL: PontosFeed? = MainActivity.JSON_ATUAL
 
     companion object {
         val PONTO_SELECIONADO = "Ponto_Selecionado"
@@ -64,41 +62,41 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
         ordenaPorDistancia(JSON_ATUAL)
     }
 
-    fun fetchJsonPontos() {
-        println("Attemp to fetch JSON PONTOS")
-        val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
-        val request = Request.Builder().url(url).build()
-        val client = OkHttpClient()
-
-        client.newCall(request).enqueue(object : Callback {
-
-            override fun onFailure(call: Call, e: IOException) {
-                println("Falha na requisição")
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                var body = response.body()?.string()
-
-                //rotina para retirar \r\n
-                body = body?.replace("\r\n", "")
-                body = body?.replace("\t", "")
-
-                //construir objeto a partir do JSON
-                println(body)
-                val gson = GsonBuilder().create()
-                val pontosFeed = gson.fromJson(body, PontosFeed::class.java)
-
-                //calculaDistancia(pontosFeed)
-                //val pontosFeed2 = ordenaPorDistancia(pontosFeed)
-
-                //mando informação para o adapter
-                //que irá atualizar o recycled view
-//                    runOnUiThread {
-//                        recyclerView_lista_pontos_proximos.adapter = PontosProximosAdapter(pontosFeed2!!)
-//                    }
-            }
-        })
-    }
+//    fun fetchJsonPontos() {
+//        println("Attemp to fetch JSON PONTOS")
+//        val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
+//        val request = Request.Builder().url(url).build()
+//        val client = OkHttpClient()
+//
+//        client.newCall(request).enqueue(object : Callback {
+//
+//            override fun onFailure(call: Call, e: IOException) {
+//                println("Falha na requisição")
+//            }
+//
+//            override fun onResponse(call: Call, response: Response) {
+//                var body = response.body()?.string()
+//
+//                //rotina para retirar \r\n
+//                body = body?.replace("\r\n", "")
+//                body = body?.replace("\t", "")
+//
+//                //construir objeto a partir do JSON
+//                println(body)
+//                val gson = GsonBuilder().create()
+//                val pontosFeed = gson.fromJson(body, PontosFeed::class.java)
+//
+//                //calculaDistancia(pontosFeed)
+//                //val pontosFeed2 = ordenaPorDistancia(pontosFeed)
+//
+//                //mando informação para o adapter
+//                //que irá atualizar o recycled view
+////                    runOnUiThread {
+////                        recyclerView_lista_pontos_proximos.adapter = PontosProximosAdapter(pontosFeed2!!)
+////                    }
+//            }
+//        })
+//    }
 
     fun calculaDistancia() {
         val LAT_Pessoa = intent.getStringExtra(MainActivity.LOC_LAT).toFloat()
@@ -106,8 +104,16 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
         val pontosFeed = JSON_ATUAL
 
         for (i in 0..pontosFeed!!.pontos.count() - 1 step 1) {
+
             var lista_pontos = pontosFeed?.pontos?.get(i)
-            lista_pontos.Distancia = (6371 * acos(cos(Math.toRadians((90 - LAT_Pessoa).toDouble())) * cos(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) + sin(Math.toRadians((90 - LAT_Pessoa).toDouble())) * sin(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) * cos(Math.toRadians((LON_Pessoa - lista_pontos.Longitude.toFloat()).toDouble())))).toLong()
+
+            val valor = (6371 * acos(cos(Math.toRadians((90 - LAT_Pessoa).toDouble())) * cos(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) + sin(Math.toRadians((90 - LAT_Pessoa).toDouble())) * sin(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) * cos(Math.toRadians((LON_Pessoa - lista_pontos.Longitude.toFloat()).toDouble())))) * 1000
+
+            //6371 * acos(cos(Math.toRadians((90 - LAT_Pessoa).toDouble())) * cos(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) + sin(Math.toRadians((90 - LAT_Pessoa).toDouble())) * sin(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) * cos(Math.toRadians((LON_Pessoa - lista_pontos.Longitude.toFloat()).toDouble())))).toLong() * 1000
+
+
+
+            lista_pontos.Distancia = valor.roundToInt()
         }
     }
 
