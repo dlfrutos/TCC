@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Looper
+import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -70,7 +71,11 @@ class MainActivity : AppCompatActivity() {
                 BD_NET = BD_NET?.replace("\t", "")
 
                 //construir objeto a partir do JSON
-                JSON_NET = GsonBuilder().create().fromJson(BD_NET, PontosFeed::class.java)
+                try { JSON_NET = GsonBuilder().create().fromJson(BD_NET, PontosFeed::class.java)}
+                catch (e: java.lang.Exception){
+                    val snackbar = Snackbar.make(main_layout,"Falha no JSON.", Snackbar.LENGTH_LONG)
+                    snackbar.show()
+                }
 
                 verificaBD()
             }

@@ -34,9 +34,7 @@ class LinhaPontoActivity() : AppCompatActivity() {
     }
 
     private fun encontraLinhas(): PontosFeed? {
-
         var pontosFeed2 = JSON_ATUAL
-
         var i = 0
         while (i < JSON_ATUAL!!.linhas.count()) {
             val pontoSelecionado = intent.getStringExtra(ListaPontoMaisProximoActivity.PONTO_SELECIONADO)
