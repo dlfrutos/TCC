@@ -14,8 +14,10 @@ import android.widget.Toast
 import com.example.daniel.jsontest2.Modelos.PontosFeed
 import com.example.daniel.jsontest2.R
 import com.example.daniel.jsontest2.referencia.CourseActivity
+import com.example.daniel.jsontest2.referencia.CourseLessonActivity
 import com.google.android.gms.location.*
 import com.google.gson.GsonBuilder
+import kotlinx.android.synthetic.main.activity_course_lesson.*
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import java.io.FileReader
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         const val LOC_LAT = "loc_lat"
         const val LOC_LON = "loc_lon"
         var JSON_ATUAL: PontosFeed? = null
-        lateinit var sb:String
+        lateinit var sb: String
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,9 +73,10 @@ class MainActivity : AppCompatActivity() {
                 BD_NET = BD_NET?.replace("\t", "")
 
                 //construir objeto a partir do JSON
-                try { JSON_NET = GsonBuilder().create().fromJson(BD_NET, PontosFeed::class.java)}
-                catch (e: java.lang.Exception){
-                    val snackbar = Snackbar.make(main_layout,"Falha no JSON.", Snackbar.LENGTH_LONG)
+                try {
+                    JSON_NET = GsonBuilder().create().fromJson(BD_NET, PontosFeed::class.java)
+                } catch (e: java.lang.Exception) {
+                    val snackbar = Snackbar.make(main_layout, "Falha no JSON.", Snackbar.LENGTH_LONG)
                     snackbar.show()
                 }
 
@@ -147,6 +150,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent4)
         }
 
+        btn_AbrirMapa.setOnClickListener() {
+            val intent5 = Intent(this, CourseLessonActivity::class.java)
+            startActivity(intent5)
+        }
+
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -206,7 +214,7 @@ class MainActivity : AppCompatActivity() {
             BD_ATUAL = BD_ATUAL?.replace("\r", "")
             BD_ATUAL = BD_ATUAL?.replace("\n", "")
             BD_ATUAL = BD_ATUAL?.replace("\t", "")
-            sb= BD_ATUAL
+            sb = BD_ATUAL
 
             //construir objeto a partir do JSON
             JSON_ATUAL = gson.fromJson(BD_ATUAL, PontosFeed::class.java)

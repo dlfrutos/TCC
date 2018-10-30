@@ -96,7 +96,8 @@ class CourseDetailActivity : AppCompatActivity() {
             customView.setOnClickListener {
                 //                println("Attemp to load")
                 val intent = Intent(customView.context, CourseLessonActivity::class.java)
-                intent.putExtra(COURSE_LESSON_LINK, courseLesson?.link)
+                //intent.putExtra(COURSE_LESSON_LINK, courseLesson?.link)
+                intent.putExtra(COURSE_LESSON_LINK, "https://drive.google.com/open?id=1PP1Z8g7GrI0CdSwEP0ftbt777YJLUHX0&usp=sharing")
                 customView.context.startActivity(intent)
             }
         }

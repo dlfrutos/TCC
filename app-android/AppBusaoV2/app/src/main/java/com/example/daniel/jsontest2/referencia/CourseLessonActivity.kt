@@ -12,15 +12,10 @@ class CourseLessonActivity: AppCompatActivity(){
         setContentView(R.layout.activity_course_lesson)
 //        webview_course_lesson.setBackgroundColor(Color.RED)
 
-        val courseLink = intent.getStringExtra(CourseDetailActivity.CourseLessonViewHolder.COURSE_LESSON_LINK)
-
+        val courseLink = "https://drive.google.com/open?id=1PP1Z8g7GrI0CdSwEP0ftbt777YJLUHX0&usp=sharing"
         webview_course_lesson.settings.javaScriptEnabled = true
         webview_course_lesson.settings.loadWithOverviewMode = true
         webview_course_lesson.settings.useWideViewPort = true
-
         webview_course_lesson.loadUrl(courseLink)
-
-
-
     }
 }
