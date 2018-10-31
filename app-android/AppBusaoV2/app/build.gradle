@@ -48,6 +48,9 @@ dependencies {
     //implementando snackbar
     implementation 'com.android.support:design:28.0.0'
 
+    //implementano cardview
+    implementation 'com.android.support:cardview-v7:28.0.0-rc02'
+
     //trabalhando com tempo
     // https://github.com/hotchemi/khronos
     // implementation 'com.github.hotchemi:khronos:0.9.0'
