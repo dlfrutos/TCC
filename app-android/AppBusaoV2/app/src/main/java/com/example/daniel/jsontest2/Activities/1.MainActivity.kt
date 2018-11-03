@@ -17,7 +17,6 @@ import com.example.daniel.jsontest2.referencia.CourseActivity
 import com.example.daniel.jsontest2.referencia.CourseLessonActivity
 import com.google.android.gms.location.*
 import com.google.gson.GsonBuilder
-import kotlinx.android.synthetic.main.activity_course_lesson.*
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import java.io.FileReader
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main2)
 
         //ROTINA VERIFICAÇÃO BANCO DE DADOS E ATUALIZAÇÃO
         println("Attemp to fetch JSON PONTOS")
@@ -95,6 +94,7 @@ class MainActivity : AppCompatActivity() {
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
             //setar evento
+            /**
             btn_start_updates.setOnClickListener(View.OnClickListener {
                 //trocado if por while
                 if (ActivityCompat.checkSelfPermission(
@@ -124,12 +124,14 @@ class MainActivity : AppCompatActivity() {
                 btn_start_updates.isEnabled = !btn_start_updates.isEnabled
                 btn_stop_updates.isEnabled = !btn_stop_updates.isEnabled
             })
+            */
 
             //testando a função main
             //textView2.setBackgroundColor(Color.RED)
         }
 
         //CARREGA ACTIVITY BUSCAR PONTOS COM OS DADOS DE LATITUDE E LONGITUDE
+        /**
         btn_BuscaPontoMaisProximo.setOnClickListener() {
             val intent1 = Intent(this, ListaPontoMaisProximoActivity::class.java)
             intent1.putExtra(LOC_LAT, LATITUDE)
@@ -149,11 +151,11 @@ class MainActivity : AppCompatActivity() {
             val intent4 = Intent(this, ListaLinhaActivity::class.java)
             startActivity(intent4)
         }
-
         btn_AbrirMapa.setOnClickListener() {
             val intent5 = Intent(this, CourseLessonActivity::class.java)
             startActivity(intent5)
         }
+        */
 
     }
 
