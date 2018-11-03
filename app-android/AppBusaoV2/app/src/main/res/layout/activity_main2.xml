@@ -3,75 +3,62 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activities.MainActivity">
+    android:layout_height="wrap_content"
+    tools:context=".Activities.MainActivity"
+    tools:layout_editor_absoluteY="81dp">
 
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="110dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/cardView2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="140dp"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintDimensionRatio="w,1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/circlepink"
-                tools:layout_editor_absoluteY="4dp" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/circlepink" />
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginBottom="8dp"
-                android:text="Seleciona o busao mais perto."
+                android:text="Programação e horário das linhas."
                 android:textAlignment="center"
-                android:textSize="8sp"
+                android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView6"
+                app:layout_constraintStart_toStartOf="@+id/textView6"
                 app:layout_constraintTop_toBottomOf="@+id/textView6"
                 app:layout_constraintVertical_bias="0.56" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toEndOf="@+id/imageView"
-                app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView"
-                app:srcCompat="@drawable/ic_directions_bus_black_24dp" />
-
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="Linhas de Busao"
+                android:text="Linhas e Horários"
+                android:textAlignment="center"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -84,71 +71,205 @@
     <android.support.v7.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="140dp"
-        android:layout_height="wrap_content"
+        android:layout_height="110dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="140dp"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageView4"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintDimensionRatio="w,1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/circlepink"
-                tools:layout_editor_absoluteY="4dp" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/circlepurple" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="8dp"
-                android:text="Seleciona o busao mais perto."
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Pontos Cadastrados"
                 android:textAlignment="center"
-                android:textSize="8sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="12sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:text="Lista de pontos cadastrados."
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView8"
+                app:layout_constraintStart_toStartOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView5"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toEndOf="@+id/imageView"
-                app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView"
-                app:srcCompat="@drawable/ic_directions_bus_black_24dp" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Busao"
-                app:layout_constraintEnd_toEndOf="@+id/imageView"
-                app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintBottom_toTopOf="@+id/textView8"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toTopOf="@+id/imageView4"
+                app:layout_constraintVertical_bias="0.45"
+                app:srcCompat="@drawable/ic_bus_stop2" />
         </android.support.constraint.ConstraintLayout>
 
 
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="@+id/cardView2"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Buscar Pontos Próximos"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView11"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toStartOf="@+id/textView11"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView10"
+                app:srcCompat="@drawable/circlegreen" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="8dp"
+                android:text="Lista os pontos mais próximos da localização atual. Permite selecionar o ponto, a linha e mostra os horários estimados de embarque (Obs: precisa de GPS ligado!)"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView10"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textView10"
+                app:layout_constraintTop_toBottomOf="@+id/textView10"
+                app:layout_constraintVertical_bias="0.51" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@+id/imageView6"
+                app:layout_constraintStart_toStartOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="@+id/imageView6"
+                app:layout_constraintVertical_bias="0.86"
+                app:srcCompat="@drawable/ic_019_map_11" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Mapa"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:text="Ver no mapa os pontos e o trajeto das linhas cadastradas."
+                android:textAlignment="center"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView17"
+                app:layout_constraintStart_toStartOf="@+id/textView17"
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintDimensionRatio="w,1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/circleyello" />
+        </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 
 

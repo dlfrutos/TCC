@@ -3,6 +3,11 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+        <entry key="imageWizard">
+          <value>
+            <PersistentState />
+          </value>
+        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -18,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/app/extra/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_directions_bus_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/app/extra/plugins/android/lib/android.jar!/images/material_design_icons/editor/ic_format_list_bulleted_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +33,13 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_directions_bus_black_24dp" />
-                            <entry key="sourceFile" value="$USER_HOME$" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="height" value="512" />
+                            <entry key="outputName" value="ic_031_radar" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/854851-navigation-maps/svg/031-radar.svg" />
+                            <entry key="width" value="512" />
                           </map>
                         </option>
                       </PersistentState>
