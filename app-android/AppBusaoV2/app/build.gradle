@@ -51,6 +51,9 @@ dependencies {
     //implementano cardview
     implementation 'com.android.support:cardview-v7:28.0.0-rc02'
 
+    //implementação do justify text
+    implementation  'me.biubiubiu.justifytext:library:1.1'
+
     //trabalhando com tempo
     // https://github.com/hotchemi/khronos
     // implementation 'com.github.hotchemi:khronos:0.9.0'
