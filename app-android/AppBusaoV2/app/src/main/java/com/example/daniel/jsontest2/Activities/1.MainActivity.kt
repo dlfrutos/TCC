@@ -2,7 +2,6 @@ package com.example.daniel.jsontest2.Activities
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Looper
@@ -13,11 +12,10 @@ import android.view.View
 import android.widget.Toast
 import com.example.daniel.jsontest2.Modelos.PontosFeed
 import com.example.daniel.jsontest2.R
-import com.example.daniel.jsontest2.referencia.CourseActivity
-import com.example.daniel.jsontest2.referencia.CourseLessonActivity
 import com.google.android.gms.location.*
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main2.*
 import okhttp3.*
 import java.io.FileReader
 import java.io.IOException
@@ -94,8 +92,11 @@ class MainActivity : AppCompatActivity() {
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
             //setar evento
-            /**
-            btn_start_updates.setOnClickListener(View.OnClickListener {
+
+//            btn_start_updates.setOnClickListener
+            (View.OnClickListener {
+
+
                 //trocado if por while
                 if (ActivityCompat.checkSelfPermission(
                                 this@MainActivity, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
@@ -107,10 +108,13 @@ class MainActivity : AppCompatActivity() {
                 fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
 
                 //mudando stado do botão
-                btn_start_updates.isEnabled = !btn_start_updates.isEnabled
-                btn_stop_updates.isEnabled = !btn_stop_updates.isEnabled
+                !cardView3.isEnabled
 
-            })
+//                btn_start_updates.isEnabled = !btn_start_updates.isEnabled
+//                btn_stop_updates.isEnabled = !btn_stop_updates.isEnabled
+
+            }
+            )
             btn_stop_updates.setOnClickListener(View.OnClickListener {
                 if (
                         ActivityCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
@@ -124,7 +128,7 @@ class MainActivity : AppCompatActivity() {
                 btn_start_updates.isEnabled = !btn_start_updates.isEnabled
                 btn_stop_updates.isEnabled = !btn_stop_updates.isEnabled
             })
-            */
+
 
             //testando a função main
             //textView2.setBackgroundColor(Color.RED)
@@ -133,29 +137,33 @@ class MainActivity : AppCompatActivity() {
         //CARREGA ACTIVITY BUSCAR PONTOS COM OS DADOS DE LATITUDE E LONGITUDE
         /**
         btn_BuscaPontoMaisProximo.setOnClickListener() {
-            val intent1 = Intent(this, ListaPontoMaisProximoActivity::class.java)
-            intent1.putExtra(LOC_LAT, LATITUDE)
-            intent1.putExtra(LOC_LON, LONGITUDE)
+        val intent1 = Intent(this, ListaPontoMaisProximoActivity::class.java)
+        intent1.putExtra(LOC_LAT, LATITUDE)
+        intent1.putExtra(LOC_LON, LONGITUDE)
 
-            startActivity(intent1)
+        startActivity(intent1)
         }
         btn_TesteCourses.setOnClickListener() {
-            val intent2 = Intent(this, CourseActivity::class.java)
-            startActivity(intent2)
+        val intent2 = Intent(this, CourseActivity::class.java)
+        startActivity(intent2)
         }
         btn_ListaPontos.setOnClickListener() {
-            val intent3 = Intent(this, ListaPontoActivity::class.java)
-            startActivity(intent3)
+        val intent3 = Intent(this, ListaPontoActivity::class.java)
+        startActivity(intent3)
         }
         btn_ListaLinhas.setOnClickListener() {
-            val intent4 = Intent(this, ListaLinhaActivity::class.java)
-            startActivity(intent4)
+        val intent4 = Intent(this, ListaLinhaActivity::class.java)
+        startActivity(intent4)
         }
         btn_AbrirMapa.setOnClickListener() {
-            val intent5 = Intent(this, CourseLessonActivity::class.java)
-            startActivity(intent5)
+        val intent5 = Intent(this, CourseLessonActivity::class.java)
+        startActivity(intent5)
         }
-        */
+         */
+
+        cardView3.setOnClickListener() {
+
+        }
 
     }
 
