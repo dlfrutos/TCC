@@ -2,10 +2,10 @@ package com.example.daniel.jsontest2.Activities
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Looper
-import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -14,7 +14,6 @@ import com.example.daniel.jsontest2.Modelos.PontosFeed
 import com.example.daniel.jsontest2.R
 import com.google.android.gms.location.*
 import com.google.gson.GsonBuilder
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main2.*
 import okhttp3.*
 import java.io.FileReader
@@ -46,6 +45,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
+        cardView3.visibility = View.GONE
+
         //ROTINA VERIFICAÇÃO BANCO DE DADOS E ATUALIZAÇÃO
         println("Attemp to fetch JSON PONTOS")
         val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
@@ -70,12 +71,7 @@ class MainActivity : AppCompatActivity() {
                 BD_NET = BD_NET?.replace("\t", "")
 
                 //construir objeto a partir do JSON
-                try {
-                    JSON_NET = GsonBuilder().create().fromJson(BD_NET, PontosFeed::class.java)
-                } catch (e: java.lang.Exception) {
-                    val snackbar = Snackbar.make(main_layout, "Falha no JSON.", Snackbar.LENGTH_LONG)
-                    snackbar.show()
-                }
+                JSON_NET = GsonBuilder().create().fromJson(BD_NET, PontosFeed::class.java)
 
                 verificaBD()
             }
@@ -92,11 +88,7 @@ class MainActivity : AppCompatActivity() {
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
             //setar evento
-
-//            btn_start_updates.setOnClickListener
-            (View.OnClickListener {
-
-
+            btn_start_updates.setOnClickListener(View.OnClickListener {
                 //trocado if por while
                 if (ActivityCompat.checkSelfPermission(
                                 this@MainActivity, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
@@ -108,63 +100,59 @@ class MainActivity : AppCompatActivity() {
                 fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
 
                 //mudando stado do botão
-                !cardView3.isEnabled
-
-//                btn_start_updates.isEnabled = !btn_start_updates.isEnabled
-//                btn_stop_updates.isEnabled = !btn_stop_updates.isEnabled
-
-            }
-            )
-            btn_stop_updates.setOnClickListener(View.OnClickListener {
-                if (
-                        ActivityCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                        ActivityCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this@MainActivity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
-                    return@OnClickListener
-                }
-
-                fusedLocationProviderClient.removeLocationUpdates(locationCallback)
-                //mudando stado do botão
                 btn_start_updates.isEnabled = !btn_start_updates.isEnabled
-                btn_stop_updates.isEnabled = !btn_stop_updates.isEnabled
+
             })
 
+//            btn_stop_updates.setOnClickListener(View.OnClickListener {
+//                if (
+//                        ActivityCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+//                        ActivityCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                    ActivityCompat.requestPermissions(this@MainActivity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
+//                    return@OnClickListener
+//                }
+//
+//                fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+//                //mudando stado do botão
+//                btn_start_updates.isEnabled = !btn_start_updates.isEnabled
+//                btn_stop_updates.isEnabled = !btn_stop_updates.isEnabled
+//            })
 
             //testando a função main
             //textView2.setBackgroundColor(Color.RED)
         }
 
         //CARREGA ACTIVITY BUSCAR PONTOS COM OS DADOS DE LATITUDE E LONGITUDE
-        /**
-        btn_BuscaPontoMaisProximo.setOnClickListener() {
-        val intent1 = Intent(this, ListaPontoMaisProximoActivity::class.java)
-        intent1.putExtra(LOC_LAT, LATITUDE)
-        intent1.putExtra(LOC_LON, LONGITUDE)
-
-        startActivity(intent1)
-        }
-        btn_TesteCourses.setOnClickListener() {
-        val intent2 = Intent(this, CourseActivity::class.java)
-        startActivity(intent2)
-        }
-        btn_ListaPontos.setOnClickListener() {
-        val intent3 = Intent(this, ListaPontoActivity::class.java)
-        startActivity(intent3)
-        }
-        btn_ListaLinhas.setOnClickListener() {
-        val intent4 = Intent(this, ListaLinhaActivity::class.java)
-        startActivity(intent4)
-        }
-        btn_AbrirMapa.setOnClickListener() {
-        val intent5 = Intent(this, CourseLessonActivity::class.java)
-        startActivity(intent5)
-        }
-         */
+//        btn_BuscaPontoMaisProximo.setOnClickListener() {
+//            val intent1 = Intent(this, ListaPontoMaisProximoActivity::class.java)
+//            intent1.putExtra(LOC_LAT, LATITUDE)
+//            intent1.putExtra(LOC_LON, LONGITUDE)
+//
+//            startActivity(intent1)
+//        }
+//        btn_TesteCourses.setOnClickListener() {
+//            val intent2 = Intent(this, CourseActivity::class.java)
+//            startActivity(intent2)
+//        }
+//        btn_ListaPontos.setOnClickListener() {
+//            val intent3 = Intent(this, ListaPontoActivity::class.java)
+//            startActivity(intent3)
+//        }
+//        btn_ListaLinhas.setOnClickListener() {
+//            val intent4 = Intent(this, ListaLinhaActivity::class.java)
+//            startActivity(intent4)
+//        }
 
         cardView3.setOnClickListener() {
 
-        }
+            fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
 
+            val intent1 = Intent(this, ListaPontoMaisProximoActivity::class.java)
+            intent1.putExtra(LOC_LAT, LATITUDE)
+            intent1.putExtra(LOC_LON, LONGITUDE)
+
+            startActivity(intent1)
+        }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -345,11 +333,16 @@ class MainActivity : AppCompatActivity() {
             override fun onLocationResult(p0: LocationResult?) {
                 var location = p0?.locations?.get(p0.locations.size - 1) //ultima posição
                 location = p0?.locations?.get(p0.locations.size - 1) //ultima posição
-                txt_Location_Latitude.text = "Latitude:  " + location?.latitude.toString()
-                txt_Location_Longitude.text = "Longitude:  " + location?.longitude.toString()
+//                txt_Location_Latitude.text = "Latitude:  " + location?.latitude.toString()
+//                txt_Location_Longitude.text = "Longitude:  " + location?.longitude.toString()
                 LATITUDE = location?.latitude.toString()
                 LONGITUDE = location?.longitude.toString()
-                btn_BuscaPontoMaisProximo.isEnabled = true
+
+                btn_start_updates.visibility = View.GONE
+                imageView9.visibility = View.GONE
+                cardView3.visibility = View.VISIBLE
+
+                //btn_BuscaPontoMaisProximo.isEnabled = true
             }
         }
     }

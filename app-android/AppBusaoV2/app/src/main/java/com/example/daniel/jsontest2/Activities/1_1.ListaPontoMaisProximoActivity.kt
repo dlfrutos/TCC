@@ -8,11 +8,12 @@ import com.example.daniel.jsontest2.Modelos.PontosFeed
 import com.example.daniel.jsontest2.R
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_lista_ponto_mais_proximo.*
-import okhttp3.*
 import java.io.File
 import java.io.FileReader
-import java.io.IOException
-import kotlin.math.*
+import kotlin.math.acos
+import kotlin.math.cos
+import kotlin.math.roundToInt
+import kotlin.math.sin
 
 class ListaPontoMaisProximoActivity : AppCompatActivity() {
     var JSON_ATUAL: PontosFeed? = MainActivity.JSON_ATUAL
@@ -110,7 +111,6 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
             val valor = (6371 * acos(cos(Math.toRadians((90 - LAT_Pessoa).toDouble())) * cos(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) + sin(Math.toRadians((90 - LAT_Pessoa).toDouble())) * sin(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) * cos(Math.toRadians((LON_Pessoa - lista_pontos.Longitude.toFloat()).toDouble())))) * 1000
 
             //6371 * acos(cos(Math.toRadians((90 - LAT_Pessoa).toDouble())) * cos(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) + sin(Math.toRadians((90 - LAT_Pessoa).toDouble())) * sin(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) * cos(Math.toRadians((LON_Pessoa - lista_pontos.Longitude.toFloat()).toDouble())))).toLong() * 1000
-
 
 
             lista_pontos.Distancia = valor.roundToInt()
