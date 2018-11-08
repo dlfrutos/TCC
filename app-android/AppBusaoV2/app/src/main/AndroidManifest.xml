@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.daniel.jsontest2">
+    package="com.android.daniel.pontoaponto">
 
     <uses-permission android:name="android.permission.INTERNET" /> <!--Internet-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />  <!--GPS-->
@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"> <!--Retira o toolbar-->
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name="com.android.daniel.pontoaponto.Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,7 +20,7 @@
         </activity>
 
         <activity
-            android:name=".referencia.CourseActivity"
+            android:name="com.android.daniel.pontoaponto.referencia.CourseActivity"
             android:launchMode="singleTop">
             <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN" />-->
@@ -28,10 +28,10 @@
             <!--</intent-filter>-->
         </activity>
         <activity
-            android:name=".Activities.ListaPontoActivity"
+            android:name="com.android.daniel.pontoaponto.Activities.ListaPontoActivity"
             android:launchMode="singleTop"></activity>
         <activity
-            android:name=".Activities.ListaPontoMaisProximoActivity"
+            android:name="com.android.daniel.pontoaponto.Activities.ListaPontoMaisProximoActivity"
             android:launchMode="singleTop">
             <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN" />-->
@@ -39,38 +39,38 @@
             <!--</intent-filter>-->
         </activity>
         <activity
-            android:name=".referencia.CourseDetailActivity"
+            android:name="com.android.daniel.pontoaponto.referencia.CourseDetailActivity"
             android:label="Course Detail"
             android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".referencia.CourseActivity" />
+                android:value="com.android.daniel.pontoaponto.referencia.CourseActivity" />
         </activity>
         <activity
-            android:name=".referencia.CourseLessonActivity"
+            android:name="com.android.daniel.pontoaponto.referencia.CourseLessonActivity"
             android:label="Course Lesson"
             android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".referencia.CourseDetailActivity" />
+                android:value="com.android.daniel.pontoaponto.referencia.CourseDetailActivity" />
         </activity>
         <activity
-            android:name=".Activities.ListaLinhaActivity"
+            android:name="com.android.daniel.pontoaponto.Activities.ListaLinhaActivity"
             android:launchMode="singleTop"></activity>
 
         <activity
-            android:name=".Activities.LinhaPontoActivity"
+            android:name="com.android.daniel.pontoaponto.Activities.LinhaPontoActivity"
             android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.ListaPontoMaisProximoActivity" />
+                android:value="com.android.daniel.pontoaponto.Activities.ListaPontoMaisProximoActivity" />
         </activity>
         <activity
-            android:name=".Activities.LinhaPontoHoraActivity"
+            android:name="com.android.daniel.pontoaponto.Activities.LinhaPontoHoraActivity"
             android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.LinhaPontoActivity" />
+                android:value="com.android.daniel.pontoaponto.Activities.LinhaPontoActivity" />
         </activity>
 
         <meta-data
