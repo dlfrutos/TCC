@@ -95,6 +95,7 @@ class MainActivity : AppCompatActivity() {
                     ActivityCompat.requestPermissions(this@MainActivity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
                     return@OnClickListener
                 }
+                cardView3.visibility = View.GONE
                 btn_start_updates.text = "Atualizando..."
                 progressBar3.visibility= View.VISIBLE
 
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity() {
                 fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
 
                 btn_start_updates.isEnabled = !btn_start_updates.isEnabled
-                Toast.makeText(this, "Localização atualizada.", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Localização atualizada.", Toast.LENGTH_SHORT).show()
             })
 
 //            btn_stop_updates.setOnClickListener(View.OnClickListener {
