@@ -30,7 +30,6 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
         calculaDistancia()
         //ordenaPorDistancia(JSON_ATUAL)
         //fetchJsonPontos()
-
         //codigo anterior que trás os dados
         txt_buscapontos_latitude.setText("Latitude: " + intent.getStringExtra(MainActivity.LOC_LAT))
         txt_buscaponto_longitude.setText("Latitude: " + intent.getStringExtra(MainActivity.LOC_LON))
@@ -63,42 +62,6 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
         ordenaPorDistancia(JSON_ATUAL)
     }
 
-//    fun fetchJsonPontos() {
-//        println("Attemp to fetch JSON PONTOS")
-//        val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
-//        val request = Request.Builder().url(url).build()
-//        val client = OkHttpClient()
-//
-//        client.newCall(request).enqueue(object : Callback {
-//
-//            override fun onFailure(call: Call, e: IOException) {
-//                println("Falha na requisição")
-//            }
-//
-//            override fun onResponse(call: Call, response: Response) {
-//                var body = response.body()?.string()
-//
-//                //rotina para retirar \r\n
-//                body = body?.replace("\r\n", "")
-//                body = body?.replace("\t", "")
-//
-//                //construir objeto a partir do JSON
-//                println(body)
-//                val gson = GsonBuilder().create()
-//                val pontosFeed = gson.fromJson(body, PontosFeed::class.java)
-//
-//                //calculaDistancia(pontosFeed)
-//                //val pontosFeed2 = ordenaPorDistancia(pontosFeed)
-//
-//                //mando informação para o adapter
-//                //que irá atualizar o recycled view
-////                    runOnUiThread {
-////                        recyclerView_lista_pontos_proximos.adapter = PontosProximosAdapter(pontosFeed2!!)
-////                    }
-//            }
-//        })
-//    }
-
     fun calculaDistancia() {
         val LAT_Pessoa = intent.getStringExtra(MainActivity.LOC_LAT).toFloat()
         val LON_Pessoa = intent.getStringExtra(MainActivity.LOC_LON).toFloat()
@@ -108,10 +71,11 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
 
             var lista_pontos = pontosFeed?.pontos?.get(i)
 
-            val valor = (6371 * acos(cos(Math.toRadians((90 - LAT_Pessoa).toDouble())) * cos(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) + sin(Math.toRadians((90 - LAT_Pessoa).toDouble())) * sin(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) * cos(Math.toRadians((LON_Pessoa - lista_pontos.Longitude.toFloat()).toDouble())))) * 1000
-
-            //6371 * acos(cos(Math.toRadians((90 - LAT_Pessoa).toDouble())) * cos(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) + sin(Math.toRadians((90 - LAT_Pessoa).toDouble())) * sin(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) * cos(Math.toRadians((LON_Pessoa - lista_pontos.Longitude.toFloat()).toDouble())))).toLong() * 1000
-
+            val valor = (6371 * acos(
+                cos(Math.toRadians((90 - LAT_Pessoa).toDouble())) * cos(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) + sin(
+                    Math.toRadians((90 - LAT_Pessoa).toDouble())
+                ) * sin(Math.toRadians((90 - (lista_pontos.Latitude).toFloat()).toDouble())) * cos(Math.toRadians((LON_Pessoa - lista_pontos.Longitude.toFloat()).toDouble()))
+            )) * 1000
 
             lista_pontos.Distancia = valor.roundToInt()
         }
@@ -141,4 +105,3 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
         return pontosFeed
     }
 }
-
