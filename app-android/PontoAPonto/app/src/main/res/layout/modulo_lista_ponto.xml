@@ -1,88 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:elevation="20dp"
-    android:background="#43bdbfd6"
-    >
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="wrap_content"
+                                             android:elevation="20dp"
+                                             android:background="#43bdbfd6"
+>
 
     <android.support.design.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:cardCornerRadius="32dp" android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp">
 
         <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/imageView_imagem_ponto"
-                android:layout_width="120dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintDimensionRatio="h,16:9"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@android:drawable/sym_def_app_icon" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/txt_ponto_id"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="PontoID"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView_imagem_ponto"
-                app:layout_constraintTop_toTopOf="parent" />
+                    android:id="@+id/txt_ponto_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="PontoID"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="26dp" android:textAlignment="viewStart" android:textAllCaps="false"
+                    app:layout_constraintBottom_toTopOf="@+id/txt_ponto_latitude" android:lineSpacingExtra="-2sp"
+                    android:textColor="@color/design_default_color_primary_dark" android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView21"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside" android:paddingBottom="-2dp"/>
 
             <TextView
-                android:id="@+id/txt_ponto_latitude"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="Latitude"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/txt_ponto_id"
-                app:layout_constraintTop_toBottomOf="@+id/txt_ponto_id" />
+                    android:id="@+id/txt_ponto_latitude"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Latitude"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_ponto_id"
+                    app:layout_constraintStart_toStartOf="@+id/txt_ponto_id"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_ponto_id" android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="2dp"
+                    app:autoSizeTextType="uniform" android:textStyle="bold" android:fontFamily="sans-serif-condensed"
+                    android:lineSpacingExtra="-2dp"/>
 
             <TextView
-                android:id="@+id/txt_ponto_longitude"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="Longitude"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/txt_ponto_latitude"
-                app:layout_constraintTop_toBottomOf="@+id/txt_ponto_latitude" />
-
-            <TextView
-                android:id="@+id/txt_ponto_distancia"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="Distância"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/txt_ponto_latitude"
-                app:layout_constraintTop_toBottomOf="@+id/txt_ponto_longitude" />
+                    android:text="100m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="51dp"
+                    android:id="@+id/textView21"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp" android:textAlignment="center"
+                    android:textSize="36sp" app:autoSizeTextType="uniform"
+                    android:background="@color/cinza"
+                    app:layout_constraintDimensionRatio="h,16:9"
+                    app:layout_constraintStart_toEndOf="@+id/txt_ponto_id" android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
 
         </android.support.constraint.ConstraintLayout>
 

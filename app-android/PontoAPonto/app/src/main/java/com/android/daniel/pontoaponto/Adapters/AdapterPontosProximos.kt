@@ -26,10 +26,12 @@ class PontosProximosAdapter(val pontosFeed: PontosFeed) : RecyclerView.Adapter<P
     override fun onBindViewHolder(holder: PontoProxViewHolder, position: Int) {
         val nomePontos = pontosFeed.pontos.get(position)
         holder.view.txt_ponto_id.text = nomePontos.PontoID
+
         //nomePontos.Distancia = 5
-        holder.view.txt_ponto_latitude.text = "Latitude: " + nomePontos.Latitude
-        holder.view.txt_ponto_longitude.text = "Longitude: " + nomePontos.Longitude
-        holder.view.txt_ponto_distancia.text = "Distancia :" + nomePontos.Distancia
+        holder.view.txt_ponto_latitude.text = "Rua: " + nomePontos.Rua
+//        holder.view.txt_ponto_longitude.text = "Longitude: " + nomePontos.Longitude
+//        holder.view.txt_ponto_distancia.text = "Distancia :" + nomePontos.Distancia
+        holder.view.textView21.text = "" + nomePontos.Distancia+"m"
 
         holder.ponto = nomePontos
     }

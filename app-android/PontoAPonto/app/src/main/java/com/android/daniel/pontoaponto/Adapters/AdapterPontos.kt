@@ -28,7 +28,7 @@ class PontosAdapter(val pontosFeed: PontosFeed) : RecyclerView.Adapter<PontoView
         val nomePontos = pontosFeed.pontos.get(position)
         holder.view.txt_ponto_id.text = nomePontos.PontoID
         holder.view.txt_ponto_latitude.text = "Latitude: "+nomePontos.Latitude
-        holder.view.txt_ponto_longitude.text = "Longitude: "+nomePontos.Longitude
+        //holder.view.txt_ponto_longitude.text = "Longitude: "+nomePontos.Longitude
     }
 }
 

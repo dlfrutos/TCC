@@ -31,8 +31,8 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
         //ordenaPorDistancia(JSON_ATUAL)
         //fetchJsonPontos()
         //codigo anterior que trás os dados
-        txt_buscapontos_latitude.setText("Latitude: " + intent.getStringExtra(MainActivity.LOC_LAT))
-        txt_buscaponto_longitude.setText("Latitude: " + intent.getStringExtra(MainActivity.LOC_LON))
+        //txt_buscapontos_latitude.setText("Latitude: " + intent.getStringExtra(MainActivity.LOC_LAT))
+        //txt_buscaponto_longitude.setText("Latitude: " + intent.getStringExtra(MainActivity.LOC_LON))
 
         recyclerView_lista_pontos_proximos.adapter = PontosProximosAdapter(ordenaPorDistancia(JSON_ATUAL)!!)
     }

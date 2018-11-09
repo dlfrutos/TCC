@@ -6,7 +6,7 @@ package com.android.daniel.pontoaponto.Modelos
 class PontosFeed(val pontos: List<Pontos>, val linhas: MutableList<Linhas>, val horaLinha: MutableList<HoraLinha>, val horaLinhaPontos: MutableList<HoraLinhaPontos>, val versao: Versao)
 
 //Lista de pontos
-class Pontos(var PontoID: String, var Latitude: String, var Longitude: String, var Distancia: Int, var Comentario: String, var Sentido: String)
+class Pontos(var PontoID: String, var Latitude: String, var Longitude: String, var Distancia: Int, var Comentario: String, var Sentido: String, var Rua: String)
 
 //Lista de Linhas
 //OBS: RoteiroPontos contém a lista de pontos de cada linha para fácil encontrar se ela passa nele ou não
