@@ -29,7 +29,8 @@ class LinhaPontoActivity() : AppCompatActivity() {
 
         val pontosFeed = encontraLinhas()
 
-        txt_linha_ponto_selecionado.text = "Ponto Selecionado: " + intent.getStringExtra(ListaPontoMaisProximoActivity.PONTO_SELECIONADO)
+        // INSERIR PONTO SELECIONADO
+       // txt_linha_ponto_selecionado.text = "Ponto Selecionado: " + intent.getStringExtra(ListaPontoMaisProximoActivity.PONTO_SELECIONADO)
         recyclerView_linha_ponto.adapter = AdapterLinhaPonto(pontosFeed!!)
     }
 

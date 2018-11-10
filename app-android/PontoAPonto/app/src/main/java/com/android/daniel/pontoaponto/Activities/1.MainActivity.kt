@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main2)
 
         cardView3.visibility = View.GONE
+        verificaBD()
+
 
         //ROTINA VERIFICAÇÃO BANCO DE DADOS E ATUALIZAÇÃO
         println("Attemp to fetch JSON PONTOS")
@@ -58,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 println("Falha na requisição")
                 //já inicializado a variável como null
 
-                verificaBD()
+//                verificaBD()
             }
 
             override fun onResponse(call: Call, response: Response) {
@@ -76,10 +78,17 @@ class MainActivity : AppCompatActivity() {
                 verificaBD()
             }
         })
-
         //VERIFICA PERMISSÃO DE UTILIZAÇÃO DO GPS
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
-            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
+        if (ActivityCompat.shouldShowRequestPermissionRationale(
+                this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            )
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                REQUEST_CODE
+            )
         } else {
             buildLocationRequest()
             buildLocationCallback()
@@ -90,14 +99,21 @@ class MainActivity : AppCompatActivity() {
             //setar evento
             btn_start_updates.setOnClickListener(View.OnClickListener {
                 if (ActivityCompat.checkSelfPermission(
-                                this@MainActivity, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                                this@MainActivity, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this@MainActivity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
+                        this@MainActivity, android.Manifest.permission.ACCESS_FINE_LOCATION
+                    ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                        this@MainActivity, android.Manifest.permission.ACCESS_COARSE_LOCATION
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    ActivityCompat.requestPermissions(
+                        this@MainActivity,
+                        arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                        REQUEST_CODE
+                    )
                     return@OnClickListener
                 }
                 cardView3.visibility = View.GONE
                 btn_start_updates.text = "Atualizando..."
-                progressBar3.visibility= View.VISIBLE
+                progressBar3.visibility = View.VISIBLE
 
                 //mudando stado do botão
                 btn_start_updates.isEnabled = !btn_start_updates.isEnabled
@@ -221,7 +237,9 @@ class MainActivity : AppCompatActivity() {
             //construir objeto a partir do JSON
             JSON_ATUAL = gson.fromJson(BD_ATUAL, PontosFeed::class.java)
         } catch (ex: Exception) {
+            Toast.makeText(this, "Erro ao ler JSON que existe.", Toast.LENGTH_SHORT).show()
         }
+
 
         //caso não tenha internet
         if (JSON_NET == null) {
@@ -248,19 +266,23 @@ class MainActivity : AppCompatActivity() {
 
             //caso tenhamos o JSON atual
             else {
-                //cria a versão data ATUAL
-                ano = (JSON_ATUAL?.versao?.DataHora)?.substring(2, 5)?.toInt()
-                mes = (JSON_ATUAL?.versao?.DataHora)?.substring(7, 8)?.toInt()
-                dia = (JSON_ATUAL?.versao?.DataHora)?.substring(10, 11)?.toInt()
-                hora = (JSON_ATUAL?.versao?.DataHora)?.substring(13, 14)?.toInt()
-                minuto = (JSON_ATUAL?.versao?.DataHora)?.substring(14, 16)?.toInt()
-                c.set(ano!!, mes!!, dia!!, hora!!, minuto!!, 0)
-                val v_atual = c
+                try {
+                    //cria a versão data ATUAL
+                    ano = (JSON_ATUAL?.versao?.DataHora)?.substring(2, 5)?.toInt()
+                    mes = (JSON_ATUAL?.versao?.DataHora)?.substring(7, 8)?.toInt()
+                    dia = (JSON_ATUAL?.versao?.DataHora)?.substring(10, 11)?.toInt()
+                    hora = (JSON_ATUAL?.versao?.DataHora)?.substring(13, 14)?.toInt()
+                    minuto = (JSON_ATUAL?.versao?.DataHora)?.substring(14, 16)?.toInt()
+                    c.set(ano!!, mes!!, dia!!, hora!!, minuto!!, 0)
+                    val v_atual = c
 
-                if (v_atual.timeInMillis > v_bkp.timeInMillis) {
-                } else {
-                    JSON_ATUAL = JSON_ORI
-                    sb = BD_ORI
+                    if (v_atual.timeInMillis > v_bkp.timeInMillis) {
+                    } else {
+                        JSON_ATUAL = JSON_ORI
+                        sb = BD_ORI
+                    }
+                }catch (e: java.lang.Exception){
+
                 }
             }
         }
@@ -326,7 +348,7 @@ class MainActivity : AppCompatActivity() {
 //            var fo = FileWriter(FILENAME, true)
 //            fo.write(string)
 //            fo.close()
-            Toast.makeText(this, "Arquivo salvo.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Bando de Dados atualizado.", Toast.LENGTH_SHORT).show()
         } catch (ex: Exception) {
         }
     }
@@ -346,7 +368,7 @@ class MainActivity : AppCompatActivity() {
                 cardView3.visibility = View.VISIBLE
                 btn_start_updates.text = "Localização OK!"
 
-                progressBar3.visibility= View.GONE
+                progressBar3.visibility = View.GONE
 
 
                 //btn_BuscaPontoMaisProximo.isEnabled = true
