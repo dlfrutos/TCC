@@ -10,8 +10,6 @@ import com.android.daniel.pontoaponto.Modelos.PontosFeed
 import com.android.daniel.pontoaponto.R
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_lhp.*
-import okhttp3.*
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -19,6 +17,11 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
     lateinit var pontoSelecionado: String
     lateinit var linhaSelecionada: String
     lateinit var JSON_ATUAL: PontosFeed
+
+    companion object {
+        var pos: Int = 0
+    }
+
     val sb = MainActivity.sb
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,16 +34,35 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
         linhaSelecionada = intent.getStringExtra(LINHA_SELECIONADA)
 
         //atualiza os campos de texto
-        txt_lhp_linhaID.text = "Linha: " + linhaSelecionada
-        txt_lhp_pontoID.text = "Ponto: " + pontoSelecionado
+        txt_lhp_linhaID.text = "►  " + linhaSelecionada
+        txt_lhp_pontoID.text = "►  " + pontoSelecionado
 
         //trabalha com JSON
-        JSON_ATUAL = GsonBuilder().create().fromJson(sb,PontosFeed::class.java)
+        JSON_ATUAL = GsonBuilder().create().fromJson(sb, PontosFeed::class.java)
         val pontosFeed2 = encontraHora(JSON_ATUAL)
 
         //envia resultado no adaptador
         recyclerView_lhp.adapter = AdapterLinhaHoraPonto(pontosFeed2!!)
+
+        var i = 0
+        while (i < pontosFeed2.pontos.count() - 1) {
+            if (pontosFeed2.pontos.get(i).PontoID == pontoSelecionado) {
+                pos = i
+            }
+            i++
+        }
+
+        if (pos > 2) {
+            pos = pos - 2
+        }
+
     }
+
+    override fun onResume() {
+        super.onResume()
+        recyclerView_lhp.scrollToPosition(pos)
+    }
+
     fun encontraHora(pontosFeed: PontosFeed?): PontosFeed? {
         var i = 0
         val calendario = Calendar.getInstance()
@@ -63,7 +85,6 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
                 pontosFeed.horaLinha.removeAt(i)
                 i--
             }
-
             //aumenta index i
             i++
         }
@@ -86,23 +107,33 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
         var token = false
         while (i < pontosFeed.horaLinha.count() - 1 && !encontrei) {
             var hora = pontosFeed.horaLinha.get(i).Hora.substring(0, 2)
-            var minuto = pontosFeed.horaLinha.get(i).Hora.substring(pontosFeed.horaLinha.get(i).Hora.length - 2, pontosFeed.horaLinha.get(i).Hora.length)
+            var minuto = pontosFeed.horaLinha.get(i).Hora.substring(
+                pontosFeed.horaLinha.get(i).Hora.length - 2,
+                pontosFeed.horaLinha.get(i).Hora.length
+            )
             var j = 1
 
             //varredura dos pontos da linha
             if (token == false) {
 
                 //cria a DataHora em função da primeira hora registrada
-                horaCalculada.set(calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DATE), Integer.valueOf(hora), Integer.valueOf(minuto), 0)
+                horaCalculada.set(
+                    calendario.get(Calendar.YEAR),
+                    calendario.get(Calendar.MONTH),
+                    calendario.get(Calendar.DATE),
+                    Integer.valueOf(hora),
+                    Integer.valueOf(minuto),
+                    0
+                )
 
                 //seta a primeira hora
-                pontosFeed.horaLinhaPontos.get(0).horaCalc = SimpleDateFormat("dd/MM HH:mm:ss").format(horaCalculada.time)
+                pontosFeed.horaLinhaPontos.get(0).horaCalc = SimpleDateFormat("dd/MM HH:mm").format(horaCalculada.time)
 
                 while (j < pontosFeed.horaLinhaPontos.count()) {
                     horaCalculada.add(Calendar.MINUTE, pontosFeed.horaLinhaPontos.get(j).IntervaloMin)
                     horaCalculada.add(Calendar.SECOND, pontosFeed.horaLinhaPontos.get(j).IntervaloSeg)
-
-                    pontosFeed.horaLinhaPontos.get(j).horaCalc = SimpleDateFormat("dd/MM HH:mm").format(horaCalculada.time)
+                    pontosFeed.horaLinhaPontos.get(j).horaCalc =
+                            SimpleDateFormat("dd/MM HH:mm").format(horaCalculada.time)
 
                     //calcula pelo intervalo
                     if (pontosFeed.horaLinhaPontos.get(j).PontoID == pontoSelecionado) {
@@ -123,42 +154,44 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
         return pontosFeed
     }
 
-    private fun fetchJsonPontos() {
-        val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
-        val request = Request.Builder().url(url).build()
-        val client = OkHttpClient()
+    /** private fun fetchJsonPontos() {
+    val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
+    val request = Request.Builder().url(url).build()
+    val client = OkHttpClient()
 
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                println("Falha na requisição")
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                var body = response.body()?.string()
-
-                //rotina para retirar \r\n
-                //e deixar o código limpo
-                body = body?.replace("\r\n", "")
-                body = body?.replace("\t", "")
-
-                //construir objeto a partir do JSON
-                //pontosFeed foi criado na activity para que não
-                //seja necessário passar por parâmetro na função de busca
-                //que será implementada, diferente das activities anteriores
-                println(body)
-                val gson = GsonBuilder().create()
-                val pontosFeed = gson.fromJson(body, PontosFeed::class.java)
-
-                //filtro linha, hora e ponto
-                // e rotina de calculo da previsão de chegada
-                val pontosFeed2 = encontraHora(pontosFeed)
-
-                runOnUiThread {
-                    recyclerView_lhp.adapter = AdapterLinhaHoraPonto(pontosFeed2!!)
-                }
-            }
-
-
-        })
+    client.newCall(request).enqueue(object : Callback {
+    override fun onFailure(call: Call, e: IOException) {
+    println("Falha na requisição")
     }
+
+    override fun onResponse(call: Call, response: Response) {
+    var body = response.body()?.string()
+
+    //rotina para retirar \r\n
+    //e deixar o código limpo
+    body = body?.replace("\r\n", "")
+    body = body?.replace("\t", "")
+
+    //construir objeto a partir do JSON
+    //pontosFeed foi criado na activity para que não
+    //seja necessário passar por parâmetro na função de busca
+    //que será implementada, diferente das activities anteriores
+    println(body)
+    val gson = GsonBuilder().create()
+    val pontosFeed = gson.fromJson(body, PontosFeed::class.java)
+
+    //filtro linha, hora e ponto
+    // e rotina de calculo da previsão de chegada
+    val pontosFeed2 = encontraHora(pontosFeed)
+
+    runOnUiThread {
+    recyclerView_lhp.adapter = AdapterLinhaHoraPonto(pontosFeed2!!)
+    }
+    }
+
+
+    })
+    }
+     **/
+
 }

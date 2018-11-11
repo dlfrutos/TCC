@@ -48,6 +48,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" android:background="#e65100"
             android:textColor="@color/cast_expanded_controller_text_color" android:textSize="24sp"
-            android:textAlignment="center" android:lineSpacingExtra="0sp" android:textStyle="bold|italic"
-            android:paddingBottom="4dp" android:paddingTop="4dp"/>
+            android:textAlignment="center" android:lineSpacingExtra="0sp"
+            android:paddingBottom="4dp" android:paddingTop="4dp" android:textStyle="bold|italic"/>
 </android.support.constraint.ConstraintLayout>
