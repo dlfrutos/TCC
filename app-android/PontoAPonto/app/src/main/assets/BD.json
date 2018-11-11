@@ -1,6 +1,6 @@
 {
 	"versao": {
-		"DataHora":"2018/11/08 19:30",
+		"DataHora":"2018/11/10 19:30",
 		"ID":"1.3",
 		"OBS":"Atualizando pontos, inserindo o valor Ruas."
 	},
@@ -124,7 +124,9 @@
 			"RoteiroPontos":"Ponto 1, Ponto 68, Ponto 69, Ponto 70, Ponto 71, Ponto 72, Ponto 73, Ponto 74, Ponto 75, Ponto 76, Ponto 77, Ponto 78, Ponto 79, Ponto 80, Ponto 81, Ponto 82, Ponto 64, Ponto 83, Ponto 84, Ponto 36, Ponto 85, Ponto 86, Ponto 87, Ponto 88, Ponto 89, Ponto 90, Ponto 91, Ponto 92, Ponto 93, Ponto 94, Ponto 95, Ponto 96, Ponto 97, Ponto 98, Ponto 99, Ponto 100, Ponto 53, Ponto 1"
 		},
 		{"LinhaID":"Campo Água Verde",
-			"RoteiroPontos":"Ponto 1, Ponto 2, Ponto 3, Ponto 4, Ponto 5, Ponto 6, Ponto 7, Ponto 8, Ponto 9, Ponto 10, Ponto 11, Ponto 12, Ponto 13, Ponto 14, Ponto 15, Ponto 16, Ponto 17, Ponto 18, Ponto 19, Ponto 20, Ponto 21, Ponto 22, Ponto 23, Ponto 24, Ponto 25, Ponto 26, Ponto 27, Ponto 28, Ponto 29, Ponto 30, Ponto 31, Ponto 32, Ponto 33, Ponto 34, Ponto 35"
+			"RoteiroPontos":"Ponto 1, Ponto 2, Ponto 3, Ponto 4, Ponto 5, Ponto 6, Ponto 7, Ponto 8, Ponto 9, Ponto 10, Ponto 11, Ponto 12, Ponto 13, Ponto 14, Ponto 15, Ponto 16, Ponto 17, Ponto 18, Ponto 19, Ponto 20, Ponto 21, Ponto 22, Ponto 23, Ponto 24, Ponto 25, Ponto 26, Ponto 27, Ponto 28, Ponto 29, Ponto 30, Ponto 31, Ponto 32, Ponto 33, Ponto 34, Ponto 35",
+			"RoteiroInicio":"Terminal Urbano",
+			"RoteiroFim":"Bairro Cohab II, Centro, ETC"
 		}
 	],
 

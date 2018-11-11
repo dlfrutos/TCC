@@ -46,11 +46,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main2)
 
         cardView3.visibility = View.GONE
-        verificaBD()
+        //verificaBD()
 
 
         //ROTINA VERIFICAÇÃO BANCO DE DADOS E ATUALIZAÇÃO
-        println("Attemp to fetch JSON PONTOS")
+        //println("Attemp to fetch JSON PONTOS")
         val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 println("Falha na requisição")
                 //já inicializado a variável como null
 
-//                verificaBD()
+               verificaBD()
             }
 
             override fun onResponse(call: Call, response: Response) {
@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity() {
                 verificaBD()
             }
         })
+
         //VERIFICA PERMISSÃO DE UTILIZAÇÃO DO GPS
         if (ActivityCompat.shouldShowRequestPermissionRationale(
                 this,
@@ -237,7 +238,6 @@ class MainActivity : AppCompatActivity() {
             //construir objeto a partir do JSON
             JSON_ATUAL = gson.fromJson(BD_ATUAL, PontosFeed::class.java)
         } catch (ex: Exception) {
-            Toast.makeText(this, "Erro ao ler JSON que existe.", Toast.LENGTH_SHORT).show()
         }
 
 

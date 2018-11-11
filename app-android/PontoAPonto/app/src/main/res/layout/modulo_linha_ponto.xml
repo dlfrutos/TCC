@@ -29,7 +29,8 @@
                     android:text="roteiroInicio"
                     app:layout_constraintStart_toStartOf="@+id/txt_linha_ponto_id"
                     app:layout_constraintEnd_toEndOf="@+id/txt_linha_ponto_id"
-                    app:layout_constraintTop_toBottomOf="@+id/divider7"/>
+                    app:layout_constraintTop_toBottomOf="@+id/divider7"
+                    android:textColor="@color/cast_expanded_controller_background_color"/>
             <TextView
                     android:id="@+id/txt_linha_ponto_id"
                     android:layout_width="0dp"
@@ -37,7 +38,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:text="LinhaID"
-                    android:textSize="18sp"
+                    android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +50,7 @@
                     android:text="roteiroFim"
                     app:layout_constraintStart_toStartOf="@+id/txt_linha_ponto_roteiroInicio"
                     app:layout_constraintEnd_toEndOf="@+id/txt_linha_ponto_roteiroInicio"
-                    app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintTop_toBottomOf="@+id/txt_linha_ponto_roteiroInicio"/>
             <View
                     android:id="@+id/divider7"
@@ -60,7 +61,7 @@
                     app:layout_constraintStart_toStartOf="@+id/txt_linha_ponto_id"
                     app:layout_constraintTop_toBottomOf="@+id/txt_linha_ponto_id" android:layout_marginTop="2dp"/>
             <TextView
-                    android:text="TextView"
+                    android:text="textView22"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView22"
@@ -68,7 +69,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/txt_linha_ponto_roteiroFim"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintTop_toBottomOf="@+id/txt_linha_ponto_roteiroFim"
-                    android:layout_marginTop="8dp" app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginBottom="8dp"/>
         </android.support.constraint.ConstraintLayout>
     </android.support.design.card.MaterialCardView>
