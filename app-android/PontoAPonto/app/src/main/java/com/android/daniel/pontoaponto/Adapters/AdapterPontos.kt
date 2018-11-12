@@ -1,5 +1,6 @@
 package com.android.daniel.pontoaponto.Adapters
 
+import android.opengl.Visibility
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -27,7 +28,9 @@ class PontosAdapter(val pontosFeed: PontosFeed) : RecyclerView.Adapter<PontoView
 //        val nomePontos = nomePontos.get(position)
         val nomePontos = pontosFeed.pontos.get(position)
         holder.view.txt_ponto_id.text = nomePontos.PontoID
-        holder.view.txt_ponto_latitude.text = "Latitude: "+nomePontos.Latitude
+        holder.view.txt_ponto_latitude.text = "Rua: " + nomePontos.Rua
+        holder.view.textView21.visibility = View.GONE
+
         //holder.view.txt_ponto_longitude.text = "Longitude: "+nomePontos.Longitude
     }
 }

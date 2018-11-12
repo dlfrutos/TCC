@@ -164,7 +164,7 @@ class MainActivity : AppCompatActivity() {
 //            startActivity(intent4)
 //        }
 
-        cardView3.setOnClickListener() {
+        cardView3.setOnClickListener {
 
             fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
 
@@ -174,6 +174,13 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent1)
         }
+
+        cardView2.setOnClickListener {
+            val intent2 = Intent(this, ListaPontoActivity::class.java)
+            startActivity(intent2)
+        }
+
+
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

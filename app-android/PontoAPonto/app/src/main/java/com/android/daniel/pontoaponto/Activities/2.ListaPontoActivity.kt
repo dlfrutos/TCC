@@ -19,42 +19,7 @@ class ListaPontoActivity : AppCompatActivity() {
 
         recyclerView_lista_pontos.layoutManager = LinearLayoutManager(this)
 
-        //fetchJsonPontos()
         val pontosFeed = GsonBuilder().create().fromJson(sb, PontosFeed::class.java)
         recyclerView_lista_pontos.adapter = PontosAdapter(pontosFeed)
-
-
     }
-
-
-//    private fun fetchJsonPontos() {
-//        println("Attemp to fetch JSON PONTOS")
-//        val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
-//        val request = Request.Builder().url(url).build()
-//        val client = OkHttpClient()
-//
-//        client.newCall(request).enqueue(object : Callback {
-//
-//            override fun onFailure(call: Call, e: IOException) {
-//                println("Falha na requisição")
-//            }
-//
-//            override fun onResponse(call: Call, response: Response) {
-//                var body = response.body()?.string()
-//
-//                //rotina para retirar \r\n
-//                body = body?.replace("\r\n", "")
-//                body = body?.replace("\t", "")
-//
-//                //construir objeto a partir do JSON
-//                println(body)
-//                val gson = GsonBuilder().create()
-//                val pontosFeed = gson.fromJson(body, PontosFeed::class.java)
-//
-//                runOnUiThread {
-//                    recyclerView_lista_pontos.adapter = PontosAdapter(pontosFeed)
-//                }
-//            }
-//        })
-//    }
 }
