@@ -58,8 +58,8 @@ class MainActivity : AppCompatActivity() {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 println("Falha na requisição")
-                //já inicializado a variável como null
 
+                //já inicializado a variável como null
                verificaBD()
             }
 
