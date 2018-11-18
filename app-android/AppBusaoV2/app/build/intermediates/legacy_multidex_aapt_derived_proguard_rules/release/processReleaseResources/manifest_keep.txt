@@ -1,2 +1,0 @@
-# Referenced at C:\TCC\app-android\AppBusaoV2\app\build\intermediates\merged_manifests\release\processReleaseManifest\merged\AndroidManifest.xml:27
--keep class android.support.multidex.MultiDexApplication { <init>(...); }

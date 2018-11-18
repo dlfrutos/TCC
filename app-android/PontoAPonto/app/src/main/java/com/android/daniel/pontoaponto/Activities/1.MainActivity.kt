@@ -2,11 +2,13 @@ package com.android.daniel.pontoaponto.Activities
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Looper
 import android.support.v4.app.ActivityCompat
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
@@ -45,8 +47,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
+        /**
+         * Esconde a cardview3 para aparecer somente quando o usuário atualizar
+         * sua localização.
+         */
         cardView3.visibility = View.GONE
-        //verificaBD()
+
+
+        /**
+         * Acesso ao SharedPreferences para
+         * permitir que sejam mostrados apenas uma vez
+         * as mensagens de diálogo pertinentes.
+         */
+        val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val primeiroAcesso = pref.getBoolean("primeiroAcesso", true)
 
 
         //ROTINA VERIFICAÇÃO BANCO DE DADOS E ATUALIZAÇÃO
@@ -59,12 +73,8 @@ class MainActivity : AppCompatActivity() {
             override fun onFailure(call: Call, e: IOException) {
                 println("Falha na requisição")
 
-<<<<<<< HEAD
                 //já inicializado a variável como null
-               verificaBD()
-=======
                 verificaBD()
->>>>>>> 1f6e0264c79dc7a401ef128985ef4409c48dcbbd
             }
 
             override fun onResponse(call: Call, response: Response) {
@@ -114,6 +124,7 @@ class MainActivity : AppCompatActivity() {
                         arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
                         REQUEST_CODE
                     )
+                    dialogClicarNovamente()
                     return@OnClickListener
                 }
                 cardView3.visibility = View.GONE
@@ -129,44 +140,52 @@ class MainActivity : AppCompatActivity() {
                 //Toast.makeText(this, "Localização atualizada.", Toast.LENGTH_SHORT).show()
             })
 
-//            btn_stop_updates.setOnClickListener(View.OnClickListener {
-//                if (
-//                        ActivityCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-//                        ActivityCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//                    ActivityCompat.requestPermissions(this@MainActivity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
-//                    return@OnClickListener
-//                }
-//
-//                fusedLocationProviderClient.removeLocationUpdates(locationCallback)
-//                //mudando stado do botão
-//                btn_start_updates.isEnabled = !btn_start_updates.isEnabled
-//                btn_stop_updates.isEnabled = !btn_stop_updates.isEnabled
-//            })
+            //down
+            /**
+            //            btn_stop_updates.setOnClickListener(View.OnClickListener {
+            //                if (
+            //                        ActivityCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            //                        ActivityCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            //                    ActivityCompat.requestPermissions(this@MainActivity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
+            //                    return@OnClickListener
+            //                }
+            //
+            //                fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+            //                //mudando stado do botão
+            //                btn_start_updates.isEnabled = !btn_start_updates.isEnabled
+            //                btn_stop_updates.isEnabled = !btn_stop_updates.isEnabled
+            //            })
 
             //testando a função main
             //textView2.setBackgroundColor(Color.RED)
+
+             **/
         }
 
+        //down
+        /**
         //CARREGA ACTIVITY BUSCAR PONTOS COM OS DADOS DE LATITUDE E LONGITUDE
-//        btn_BuscaPontoMaisProximo.setOnClickListener() {
-//            val intent1 = Intent(this, ListaPontoMaisProximoActivity::class.java)
-//            intent1.putExtra(LOC_LAT, LATITUDE)
-//            intent1.putExtra(LOC_LON, LONGITUDE)
-//
-//            startActivity(intent1)
-//        }
-//        btn_TesteCourses.setOnClickListener() {
-//            val intent2 = Intent(this, CourseActivity::class.java)
-//            startActivity(intent2)
-//        }
-//        btn_ListaPontos.setOnClickListener() {
-//            val intent3 = Intent(this, ListaPontoActivity::class.java)
-//            startActivity(intent3)
-//        }
-//        btn_ListaLinhas.setOnClickListener() {
-//            val intent4 = Intent(this, ListaLinhaActivity::class.java)
-//            startActivity(intent4)
-//        }
+        //        btn_BuscaPontoMaisProximo.setOnClickListener() {
+        //            val intent1 = Intent(this, ListaPontoMaisProximoActivity::class.java)
+        //            intent1.putExtra(LOC_LAT, LATITUDE)
+        //            intent1.putExtra(LOC_LON, LONGITUDE)
+        //
+        //            startActivity(intent1)
+        //        }
+        //        btn_TesteCourses.setOnClickListener() {
+        //            val intent2 = Intent(this, CourseActivity::class.java)
+        //            startActivity(intent2)
+        //        }
+        //        btn_ListaPontos.setOnClickListener() {
+        //            val intent3 = Intent(this, ListaPontoActivity::class.java)
+        //            startActivity(intent3)
+        //        }
+        //        btn_ListaLinhas.setOnClickListener() {
+        //            val intent4 = Intent(this, ListaLinhaActivity::class.java)
+        //            startActivity(intent4)
+        //        }
+         **/
+
 
         //card PONTO MAIS PRÓXIMO
         cardView3.setOnClickListener {
@@ -176,7 +195,6 @@ class MainActivity : AppCompatActivity() {
             val intent1 = Intent(this, ListaPontoMaisProximoActivity::class.java)
             intent1.putExtra(LOC_LAT, LATITUDE)
             intent1.putExtra(LOC_LON, LONGITUDE)
-
             startActivity(intent1)
         }
 
@@ -192,7 +210,52 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        if (primeiroAcesso) {
+            dialogTutorial()
+            dialogBoasVindas()
+
+            /**
+             * Salva o "PRIMEIRO ACESSO"
+             * para que o dialog não apareça novamente
+             */
+            pref.edit().putBoolean("primeiroAcesso", false).apply()
+        }
+
     }
+
+    private fun dialogClicarNovamente() {
+        val builder1 = AlertDialog.Builder(this)
+        builder1.setTitle("ACESSO A  LOCALIZAÇÃO")
+        builder1.setMessage(
+            "Pressione novamente o botão \n'ATUALIZAR LOCALIZAÇÃO' e aguarde o sistema finalizar o processamento..."
+        )
+        builder1.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
+        builder1.show()
+    }
+
+    private fun dialogBoasVindas() {
+        val builder1 = AlertDialog.Builder(this)
+        builder1.setTitle("SEJA BEM VINDO!")
+        builder1.setMessage(
+            "Obrigado por instalar o aplicativo PONTO-A-PONTO! \n\nBuscamos facilitar a utilização de transporte público com informações rápidas, inteligentes e de fácil acesso, com o mínimo de uso de internet e de forma GRATUITA." +
+                    "\n\nEsperamos que tenha uma ÓTIMA experiência!" +
+                    "\n\nSinceramente,\nEquipe PONTO-A-PONTO."
+        )
+        builder1.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
+
+        builder1.show()
+
+    }
+
+    private fun dialogTutorial() {
+        val builder2 = AlertDialog.Builder(this)
+        builder2.setTitle("*** TUTORIAL ***")
+        builder2.setMessage("Esta é a tela principal do seu APP. Gostaria de continuar o tutorial para entender seu funcionamento?. \n\nOBS: Poderá refazê-lo a qualquer momento utilizando a opção 'TUTORIAL' na tela principal. \n\nGostaria de fazer o tutorial?")
+        builder2.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
+        builder2.setNegativeButton("NOPE", { dialogInterface: DialogInterface, i: Int -> })
+        builder2.show()
+    }
+
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -350,14 +413,13 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        /**
+        /***********
          * 3° PASSO
          * *********
          * Escreve a versão final na memoria interna
          */
         try {
             val FILENAME = "JSON_ATUAL.json"
-//            val string = JSON_ATUAL.toString()
             val fos = openFileOutput(FILENAME, Context.MODE_PRIVATE)
             fos.write(JSON_ATUAL.toString().toByteArray())
             fos.close()
@@ -366,7 +428,7 @@ class MainActivity : AppCompatActivity() {
 //            var fo = FileWriter(FILENAME, true)
 //            fo.write(string)
 //            fo.close()
-            Toast.makeText(this, "Bando de Dados atualizado.", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Bando de Dados atualizado.", Toast.LENGTH_SHORT).show()
         } catch (ex: Exception) {
         }
     }
