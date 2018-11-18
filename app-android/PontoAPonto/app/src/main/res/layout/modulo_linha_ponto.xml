@@ -46,7 +46,7 @@
             <TextView
                     android:id="@+id/txt_linha_ponto_roteiroFim"
                     android:layout_width="0dp"
-                    android:layout_height="23dp"
+                    android:layout_height="wrap_content"
                     android:text="roteiroFim"
                     app:layout_constraintStart_toStartOf="@+id/txt_linha_ponto_roteiroInicio"
                     app:layout_constraintEnd_toEndOf="@+id/txt_linha_ponto_roteiroInicio"
@@ -64,7 +64,7 @@
             <TextView
                     android:text="[a ser implementado]"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="20dp"
                     android:id="@+id/textView22"
                     app:layout_constraintStart_toStartOf="@+id/txt_linha_ponto_roteiroFim"
                     app:layout_constraintEnd_toEndOf="@+id/txt_linha_ponto_roteiroFim"

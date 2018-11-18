@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 println("Falha na requisição")
                 //já inicializado a variável como null
 
-               verificaBD()
+                verificaBD()
             }
 
             override fun onResponse(call: Call, response: Response) {
@@ -164,6 +164,7 @@ class MainActivity : AppCompatActivity() {
 //            startActivity(intent4)
 //        }
 
+        //card PONTO MAIS PRÓXIMO
         cardView3.setOnClickListener {
 
             fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
@@ -175,9 +176,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent1)
         }
 
+        //card PONTOS CADASTRADOS
         cardView2.setOnClickListener {
             val intent2 = Intent(this, ListaPontoActivity::class.java)
             startActivity(intent2)
+        }
+
+        cardView.setOnClickListener {
+            val intent4 = Intent(this, ListaLinhaActivity::class.java)
+            startActivity(intent4)
         }
 
 
@@ -288,7 +295,7 @@ class MainActivity : AppCompatActivity() {
                         JSON_ATUAL = JSON_ORI
                         sb = BD_ORI
                     }
-                }catch (e: java.lang.Exception){
+                } catch (e: java.lang.Exception) {
 
                 }
             }
