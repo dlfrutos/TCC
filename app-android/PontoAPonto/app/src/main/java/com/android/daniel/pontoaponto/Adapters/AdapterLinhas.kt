@@ -24,8 +24,8 @@ class AdapterLinhas(val pontosFeed: PontosFeed) : RecyclerView.Adapter<LinhaView
     override fun onBindViewHolder(holder: LinhaViewHolder, position: Int) {
         val nomeLinhas = pontosFeed.linhas.get(position)
         holder.view.txt_linha_id.text = nomeLinhas.LinhaID
-        holder.view.txt_linha_roteiroInicio.text = nomeLinhas.RoteiroInicio
-        holder.view.txt_linha_roteiroFim.text = nomeLinhas.RoteiroFim
+        holder.view.txt_linha_roteiroInicio.text = "Inicio: "+nomeLinhas.RoteiroInicio
+        holder.view.txt_linha_roteiroFim.text = "Locais: "+nomeLinhas.RoteiroFim
     }
 }
 

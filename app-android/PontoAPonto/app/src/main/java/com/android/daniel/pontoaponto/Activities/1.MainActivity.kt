@@ -209,7 +209,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent4)
         }
 
-
         if (primeiroAcesso) {
             dialogTutorial()
             dialogBoasVindas()
@@ -424,11 +423,12 @@ class MainActivity : AppCompatActivity() {
             fos.write(JSON_ATUAL.toString().toByteArray())
             fos.close()
 
-            //checando arquivos dentro da pasta
-//            var fo = FileWriter(FILENAME, true)
-//            fo.write(string)
-//            fo.close()
+            /**            //checando arquivos dentro da pasta
+            //            var fo = FileWriter(FILENAME, true)
+            //            fo.write(string)
+            //            fo.close()
             //Toast.makeText(this, "Bando de Dados atualizado.", Toast.LENGTH_SHORT).show()
+             */
         } catch (ex: Exception) {
         }
     }
@@ -439,19 +439,13 @@ class MainActivity : AppCompatActivity() {
             override fun onLocationResult(p0: LocationResult?) {
                 var location = p0?.locations?.get(p0.locations.size - 1) //ultima posição
                 location = p0?.locations?.get(p0.locations.size - 1) //ultima posição
-//                txt_Location_Latitude.text = "Latitude:  " + location?.latitude.toString()
-//                txt_Location_Longitude.text = "Longitude:  " + location?.longitude.toString()
                 LATITUDE = location?.latitude.toString()
                 LONGITUDE = location?.longitude.toString()
 
-                //btn_start_updates.visibility = View.GONE
                 cardView3.visibility = View.VISIBLE
                 btn_start_updates.text = "Localização OK!"
 
                 progressBar3.visibility = View.GONE
-
-
-                //btn_BuscaPontoMaisProximo.isEnabled = true
             }
         }
     }

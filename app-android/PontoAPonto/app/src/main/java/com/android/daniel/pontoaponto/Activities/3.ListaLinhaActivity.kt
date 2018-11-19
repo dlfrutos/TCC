@@ -12,42 +12,16 @@ import okhttp3.*
 import java.io.IOException
 
 class ListaLinhaActivity : AppCompatActivity() {
+    lateinit var JSON_ATUAL: PontosFeed
+    val sb = MainActivity.sb
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_linhas)
         recyclerView_lista_linhas.layoutManager = LinearLayoutManager(this)
-        fetchJSON()
 
-    }
+        val pontosFeed = GsonBuilder().create().fromJson(sb, PontosFeed::class.java)
+        recyclerView_lista_linhas.adapter = AdapterLinhas(pontosFeed)
 
-    private fun fetchJSON() {
-        val url = "https://raw.githubusercontent.com/dlfrutos/TCC/master/Repositorio/BD/BD.json"
-        val request = Request.Builder().url(url).build()
-        val client = OkHttpClient()
-
-        client.newCall(request).enqueue(object : Callback {
-
-            override fun onFailure(call: Call, e: IOException) {
-                println("Falha na requisição")
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                var body = response.body()?.string()
-
-                //rotina para retirar \r\n
-                body = body?.replace("\r\n", "")
-                body = body?.replace("\t", "")
-
-                //construir objeto a partir do JSON
-                println(body)
-                val gson = GsonBuilder().create()
-                val pontosFeed = gson.fromJson(body, PontosFeed::class.java)
-
-                runOnUiThread {
-                    recyclerView_lista_linhas.adapter = AdapterLinhas(pontosFeed)
-                }
-            }
-        })
     }
 }

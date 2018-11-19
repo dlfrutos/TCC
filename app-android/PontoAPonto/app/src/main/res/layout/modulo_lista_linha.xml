@@ -1,61 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="wrap_content"
+>
 
 
-    <ImageView
-        android:id="@+id/imageView_imagem_linha"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="h,16:9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+    <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
 
-    <TextView
-        android:id="@+id/txt_linha_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="LinhaID"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView_imagem_linha"
-        app:layout_constraintTop_toTopOf="parent" />
+            app:cardCornerRadius="32dp"
+            android:elevation="2dp"
 
-    <TextView
-        android:id="@+id/txt_linha_roteiroInicio"
-        android:layout_width="0dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="8dp"
-        android:text="roteiroInicio"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView_imagem_linha"
-        app:layout_constraintTop_toBottomOf="@+id/txt_linha_id" />
 
-    <TextView
-        android:id="@+id/txt_linha_roteiroFim"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="8dp"
-        android:text="roteiroFim"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView_imagem_linha"
-        app:layout_constraintTop_toBottomOf="@+id/txt_linha_roteiroInicio" />
+            android:layout_marginTop="4dp" android:layout_marginBottom="4dp" android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0">
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/txt_linha_roteiroFim"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="roteiroFim"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_linha_id"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_linha_roteiroInicio"
+                    app:layout_constraintStart_toStartOf="@+id/txt_linha_roteiroInicio"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"/>
+            <TextView
+                    android:id="@+id/txt_linha_id"
+                    android:layout_width="0dp"
+                    android:textColor="@color/green"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="LinhaID"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_imagem_linha" android:layout_marginStart="16dp"/>
+            <ImageView
+                    android:id="@+id/imageView_imagem_linha"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:src="@drawable/ic_bus"
+                    app:layout_constraintDimensionRatio="h,1:1"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_linha_roteiroFim" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toTopOf="@+id/txt_linha_id"
+            />
+            <TextView
+                    android:id="@+id/txt_linha_roteiroInicio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="roteiroInicio"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_linha_id"
+                    app:layout_constraintStart_toStartOf="@+id/txt_linha_id"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_linha_id" android:layout_marginTop="8dp"/>
+            <View
+                    android:id="@+id/divider8"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/preto"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_linha_id"
+                    app:layout_constraintEnd_toEndOf="@+id/txt_linha_id"
+                    app:layout_constraintStart_toStartOf="@+id/txt_linha_id"/>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>
