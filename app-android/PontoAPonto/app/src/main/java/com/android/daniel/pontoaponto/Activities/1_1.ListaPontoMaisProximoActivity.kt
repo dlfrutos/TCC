@@ -1,6 +1,9 @@
 package com.android.daniel.pontoaponto.Activities
 
+import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.android.daniel.pontoaponto.Adapters.PontosProximosAdapter
@@ -27,14 +30,34 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lista_ponto_mais_proximo)
         recyclerView_lista_pontos_proximos.layoutManager = LinearLayoutManager(this)
 
-        calculaDistancia()
-        //ordenaPorDistancia(JSON_ATUAL)
-        //fetchJsonPontos()
-        //codigo anterior que trás os dados
-        //txt_buscapontos_latitude.setText("Latitude: " + intent.getStringExtra(MainActivity.LOC_LAT))
-        //txt_buscaponto_longitude.setText("Latitude: " + intent.getStringExtra(MainActivity.LOC_LON))
+        val pref1 = getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val primeiroAcesso1 = pref1.getBoolean("primeiroAcesso1", true)
 
+        calculaDistancia()
         recyclerView_lista_pontos_proximos.adapter = PontosProximosAdapter(ordenaPorDistancia(JSON_ATUAL)!!)
+
+
+        /**
+         * MSGDIALOG que deve aparecer apenas 1 vez
+         */
+        if (primeiroAcesso1) {
+            dialogTutorial()
+
+            /**
+             * Salva o "PRIMEIRO ACESSO"
+             * para que o dialog não apareça novamente
+             */
+            pref1.edit().putBoolean("primeiroAcesso1", false).apply()
+        }
+    }
+
+    private fun dialogTutorial() {
+        val builder2 = AlertDialog.Builder(this)
+        builder2.setTitle("*** PONTOS MAIS PRÓXIMOS ***")
+        builder2.setMessage("Esta é a tela mostra os pontos mais próximos de sua localização. A distância é mostrada em Metros." +
+                "\n\n Pressione um dos pontos para selecionar o mesmo. Para mudar, basta voltar a esta tela e selecionar outro ponto.")
+        builder2.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
+        builder2.show()
     }
 
     private fun leJson() {

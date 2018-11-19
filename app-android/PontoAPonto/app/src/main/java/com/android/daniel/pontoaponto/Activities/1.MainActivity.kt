@@ -243,7 +243,6 @@ class MainActivity : AppCompatActivity() {
         builder1.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
 
         builder1.show()
-
     }
 
     private fun dialogTutorial() {
