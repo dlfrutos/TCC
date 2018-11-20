@@ -25,14 +25,14 @@
             android:text="Lista de Pontos Próximos (1/3)"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:autoSizeTextType="uniform" android:background="@color/design_default_color_primary"
+            app:autoSizeTextType="uniform" android:background="#283593"
             android:textStyle="bold"
             android:layout_width="0dp" android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" android:textAlignment="center"
             app:layout_constraintHorizontal_bias="0.0"
             android:textColor="@color/cast_libraries_material_featurehighlight_text_body_color"
-            android:paddingBottom="8dp" android:paddingTop="8dp"/>
+            android:paddingBottom="20dp" android:paddingTop="20dp"/>
     <TextView
             android:text="Selecione um ponto..."
             android:layout_width="0dp"

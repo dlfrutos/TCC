@@ -3,7 +3,6 @@
 <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent" android:background="@color/cinza">
 
@@ -11,15 +10,15 @@
             android:text="Lista de Linhas (2/3)"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:autoSizeTextType="uniform" android:background="@color/design_default_color_primary"
+            app:autoSizeTextType="uniform" android:background="#283593"
             android:textStyle="bold"
-            android:layout_width="0dp" android:textSize="30sp"
+            android:layout_width="0dp" android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" android:textAlignment="center"
             app:layout_constraintHorizontal_bias="0.0"
             android:textColor="@color/cast_libraries_material_featurehighlight_text_body_color"
             android:id="@+id/textView5"
-            android:paddingBottom="8dp"/>
+            android:paddingBottom="20dp" android:paddingTop="20dp"/>
 
 
     <android.support.v7.widget.RecyclerView
@@ -31,7 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView23"/>
     <TextView
-            android:text="Selecione uma das linhas que passam no ponto selecionado."
+            android:text="Selecione uma linha..."
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView23"
@@ -41,13 +40,17 @@
             android:textColor="@color/cast_libraries_material_featurehighlight_text_body_color"
             android:textAlignment="center" app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/textView25" android:paddingBottom="4dp" android:paddingTop="4dp"/>
+
+
     <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView25" android:text="textView25" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" android:background="#e65100"
-            android:textColor="@color/cast_expanded_controller_text_color" android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            android:background="@color/design_default_color_primary"
+            android:textSize="24sp"
             android:textAlignment="center" android:lineSpacingExtra="0sp"
-            android:paddingBottom="4dp" android:paddingTop="4dp" android:textStyle="bold|italic"/>
+            android:textStyle="bold|italic" android:padding="4dp" app:layout_constraintHorizontal_bias="0.0"
+            android:textColor="#fff59d"/>
 </android.support.constraint.ConstraintLayout>

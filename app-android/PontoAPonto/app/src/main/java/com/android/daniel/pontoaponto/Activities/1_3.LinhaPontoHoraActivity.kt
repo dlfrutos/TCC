@@ -34,8 +34,8 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
         linhaSelecionada = intent.getStringExtra(LINHA_SELECIONADA)
 
         //atualiza os campos de texto
-        txt_lhp_linhaID.text = "►  " + linhaSelecionada
-        txt_lhp_pontoID.text = "►  " + pontoSelecionado
+        txt_lhp_linhaID.text = "Linha: " + linhaSelecionada
+        txt_lhp_pontoID.text = "Embarque: " + pontoSelecionado
 
         //trabalha com JSON
         JSON_ATUAL = GsonBuilder().create().fromJson(sb, PontosFeed::class.java)
@@ -52,9 +52,14 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
             i++
         }
 
+        // corrige a posição para 2 pontos antes assim
+        // fica "centralizado" o ponto selecionado
         if (pos > 2) {
             pos = pos - 2
         }
+
+
+
 
     }
 

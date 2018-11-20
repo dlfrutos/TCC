@@ -1,11 +1,14 @@
 package com.android.daniel.pontoaponto.referencia
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.android.daniel.pontoaponto.Activities.LinhaPontoHoraActivity
+import com.android.daniel.pontoaponto.Activities.MainActivity
 import com.android.daniel.pontoaponto.R
 import kotlinx.android.synthetic.main.activity_course_lesson.*
 
-class CourseLessonActivity: AppCompatActivity(){
+class CourseLessonActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -18,4 +21,13 @@ class CourseLessonActivity: AppCompatActivity(){
         webview_course_lesson.settings.useWideViewPort = true
         webview_course_lesson.loadUrl(courseLink)
     }
+
+
+    override fun onRestart() {
+        super.onRestart()
+        val intent = Intent(this, MainActivity::class.java)
+        this.startActivity(intent)
+
+    }
+
 }

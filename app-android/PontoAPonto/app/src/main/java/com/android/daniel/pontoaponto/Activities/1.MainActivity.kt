@@ -134,6 +134,7 @@ class MainActivity : AppCompatActivity() {
                 //mudando stado do botão
                 btn_start_updates.isEnabled = !btn_start_updates.isEnabled
 
+                //loop
                 fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
 
                 btn_start_updates.isEnabled = !btn_start_updates.isEnabled
@@ -248,9 +249,9 @@ class MainActivity : AppCompatActivity() {
     private fun dialogTutorial() {
         val builder2 = AlertDialog.Builder(this)
         builder2.setTitle("*** TUTORIAL ***")
-        builder2.setMessage("Esta é a tela principal do seu APP. Gostaria de continuar o tutorial para entender seu funcionamento?. \n\nOBS: Poderá refazê-lo a qualquer momento utilizando a opção 'TUTORIAL' na tela principal. \n\nGostaria de fazer o tutorial?")
+        builder2.setMessage("Esta é a tela principal do seu APP. Recomendamos que verifique o tutorial para saber como extrair o melhor de seu app PONTO A PONTO.. \n\nOBS: Poderá fazê-lo a qualquer momento selecionando o botão 'TUTORIAL' aqui, na tela principal.")
         builder2.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
-        builder2.setNegativeButton("NOPE", { dialogInterface: DialogInterface, i: Int -> })
+        // builder2.setNegativeButton("NOPE", { dialogInterface: DialogInterface, i: Int -> })
         builder2.show()
     }
 

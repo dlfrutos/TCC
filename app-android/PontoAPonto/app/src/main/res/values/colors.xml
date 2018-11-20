@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffc107</color>
+    <color name="colorPrimary">#304ffe</color>
     <color name="colorPrimaryDark">#8d6e63</color>
     <color name="backgroundcolor">#fcfcfc</color>
     <color name="lightgray">#ededed</color>
     <color name="deeppurple">#b39ddb</color>
     <color name="yello">#fb8c00</color>
     <color name="green">#388e3c</color>
-    <color name="blue">#6dc8ff</color>
+    <color name="blue">#b3e5fc</color>
     <color name="colorAccent">#ff8cb3</color>
     <color name="darkblue">#23283a</color>
     <color name="testcolorblue">#152b38</color>

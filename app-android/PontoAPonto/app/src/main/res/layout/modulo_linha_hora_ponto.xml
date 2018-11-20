@@ -17,7 +17,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:cardCornerRadius="32dp" android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp" android:id="@+id/cardView10">
+            android:layout_marginTop="8dp" android:id="@+id/cardView10" app:cardElevation="12dp">
 
         <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"

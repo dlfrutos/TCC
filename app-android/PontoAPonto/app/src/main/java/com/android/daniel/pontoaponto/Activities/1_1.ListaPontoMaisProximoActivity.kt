@@ -53,9 +53,9 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
 
     private fun dialogTutorial() {
         val builder2 = AlertDialog.Builder(this)
-        builder2.setTitle("*** PONTOS MAIS PRÓXIMOS ***")
-        builder2.setMessage("Esta é a tela mostra os pontos mais próximos de sua localização. A distância é mostrada em Metros." +
-                "\n\n Pressione um dos pontos para selecionar o mesmo. Para mudar, basta voltar a esta tela e selecionar outro ponto.")
+        builder2.setTitle("PONTOS MAIS PRÓXIMOS")
+        builder2.setMessage("Esta é a tela que mostra os pontos mais próximos de sua localização. A distância é mostrada em Metros." +
+                "\n\nPressione um dos pontos para selecionar o mesmo. Para mudar, basta voltar a esta tela e selecionar outro ponto.")
         builder2.setPositiveButton("OK", { dialogInterface: DialogInterface, i: Int -> })
         builder2.show()
     }
