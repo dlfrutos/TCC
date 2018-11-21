@@ -215,6 +215,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CourseLessonActivity::class.java)
             this.startActivity(intent)
         }
+        cardView5.setOnClickListener {
+            val intent = Intent(this, PDFReader::class.java)
+            this.startActivity(intent)
+        }
 
         if (primeiroAcesso) {
             dialogTutorial()
