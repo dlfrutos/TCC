@@ -1,0 +1,13 @@
+
+Luciano
+- Apresentação?
+- Documentação?
+- Artigo?
+
+
+*****
+Atualizações 
+- mudar a cor do botão do mainactivity [similar ao titulo do 1.1]
+- mudar o nome do app [deixar + formal] 
+- acertar o cornerradius dos outros módulos
+- ver para travar na vertical 

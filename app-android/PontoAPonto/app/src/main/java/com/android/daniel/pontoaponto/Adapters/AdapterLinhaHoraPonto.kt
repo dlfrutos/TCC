@@ -55,26 +55,17 @@ class AdapterLinhaHoraPonto(val pontosFeed: PontosFeed) : RecyclerView.Adapter<L
                 holder.itemView.textView29.setBackgroundColor(Color.parseColor("#00000000"))
             } else {
                 holder.itemView.textView29.setBackgroundColor(Color.parseColor("#78000000"))
-//                if (token) {
-//                    item = position
-//                    token = false
-//                }
             }
         } else if (pontoHora > agoraHora) {
             holder.itemView.textView29.setBackgroundColor(Color.parseColor("#00000000"))
         } else {
             holder.itemView.textView29.setBackgroundColor(Color.parseColor("#78000000"))
-//            if (token) {
-//                item = position
-//                token = false
-//            }
         }
 
 
         if (LinhaPontoActivity.PONTO_VALOR.equals(hlp.PontoID)) {
             LinhaPontoHoraActivity.pos = position
-            //holder.itemView.cardView10.setBackgroundColor(Color.parseColor("#84FFC107"))
-            //holder.itemView.cardView10.setBackgroundColor(Color.YELLOW)
+            holder.itemView.cardView10.setCardBackgroundColor(Color.YELLOW)
         }
     }
 }

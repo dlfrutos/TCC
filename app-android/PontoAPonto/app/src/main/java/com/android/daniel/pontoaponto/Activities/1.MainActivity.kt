@@ -14,6 +14,7 @@ import android.view.View
 import android.widget.Toast
 import com.android.daniel.pontoaponto.Modelos.PontosFeed
 import com.android.daniel.pontoaponto.R
+import com.android.daniel.pontoaponto.referencia.CourseLessonActivity
 import com.google.android.gms.location.*
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main2.*
@@ -208,6 +209,11 @@ class MainActivity : AppCompatActivity() {
         cardView.setOnClickListener {
             val intent4 = Intent(this, ListaLinhaActivity::class.java)
             startActivity(intent4)
+        }
+
+        cardView4.setOnClickListener {
+            val intent = Intent(this, CourseLessonActivity::class.java)
+            this.startActivity(intent)
         }
 
         if (primeiroAcesso) {

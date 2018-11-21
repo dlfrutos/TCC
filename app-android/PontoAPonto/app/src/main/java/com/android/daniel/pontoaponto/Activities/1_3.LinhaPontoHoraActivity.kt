@@ -39,6 +39,7 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
 
         //trabalha com JSON
         JSON_ATUAL = GsonBuilder().create().fromJson(sb, PontosFeed::class.java)
+
         val pontosFeed2 = encontraHora(JSON_ATUAL)
 
         //envia resultado no adaptador
@@ -55,11 +56,8 @@ class LinhaPontoHoraActivity : AppCompatActivity() {
         // corrige a posição para 2 pontos antes assim
         // fica "centralizado" o ponto selecionado
         if (pos > 2) {
-            pos = pos - 2
+            pos = pos - 1
         }
-
-
-
 
     }
 

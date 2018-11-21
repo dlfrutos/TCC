@@ -27,7 +27,6 @@ class CourseLessonActivity : AppCompatActivity() {
         super.onRestart()
         val intent = Intent(this, MainActivity::class.java)
         this.startActivity(intent)
-
     }
 
 }
