@@ -15,7 +15,7 @@ class PDFReader : AppCompatActivity() {
         setContentView(R.layout.activity_pdfreader)
 
         val pdfView = pdfView
-        pdfView.fromAsset("Tutorial.pdf").load()
+        pdfView.fromAsset(intent.getStringExtra("PDF")).load()
 
     }
 }

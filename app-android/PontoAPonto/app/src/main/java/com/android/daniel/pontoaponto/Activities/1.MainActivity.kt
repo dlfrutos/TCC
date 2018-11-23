@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Looper
 import android.support.v4.app.ActivityCompat
@@ -216,8 +217,13 @@ class MainActivity : AppCompatActivity() {
             this.startActivity(intent)
         }
         cardView5.setOnClickListener {
-            val intent = Intent(this, PDFReader::class.java)
+            //            val intent = Intent(this, PDFReader::class.java)
+//            this.startActivity(intent)
+
+            val intent = Intent(this, TutorialActivity::class.java)
             this.startActivity(intent)
+
+
         }
 
         if (primeiroAcesso) {
@@ -453,6 +459,7 @@ class MainActivity : AppCompatActivity() {
                 LONGITUDE = location?.longitude.toString()
 
                 cardView3.visibility = View.VISIBLE
+                btn_start_updates.setBackgroundColor(Color.GREEN)
                 btn_start_updates.text = "Localização OK!"
 
                 progressBar3.visibility = View.GONE

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.android.daniel.pontoaponto.Activities.LinhaPontoActivity
 import com.android.daniel.pontoaponto.Activities.LinhaPontoHoraActivity
+import com.android.daniel.pontoaponto.Activities.LinhaPontoHoraActivity.Companion.pos
 import com.android.daniel.pontoaponto.Modelos.Pontos
 import com.android.daniel.pontoaponto.Modelos.PontosFeed
 import com.android.daniel.pontoaponto.R
@@ -63,9 +64,16 @@ class AdapterLinhaHoraPonto(val pontosFeed: PontosFeed) : RecyclerView.Adapter<L
         }
 
 
-        if (LinhaPontoActivity.PONTO_VALOR.equals(hlp.PontoID)) {
+        if (LinhaPontoActivity.PONTO_VALOR == hlp.PontoID) {
+            println(hlp.PontoID)
             LinhaPontoHoraActivity.pos = position
-            holder.itemView.cardView10.setCardBackgroundColor(Color.YELLOW)
+            if (pos == position) {
+                holder.itemView.cardView10.setCardBackgroundColor(Color.YELLOW)
+            } else {
+                holder.itemView.cardView10.setCardBackgroundColor(Color.WHITE)
+            }
+        } else {
+            holder.itemView.cardView10.setCardBackgroundColor(Color.WHITE)
         }
     }
 }
