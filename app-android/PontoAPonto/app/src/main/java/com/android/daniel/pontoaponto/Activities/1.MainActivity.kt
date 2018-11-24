@@ -212,26 +212,37 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent4)
         }
 
+        //cardMapa
         cardView4.setOnClickListener {
             val intent = Intent(this, CourseLessonActivity::class.java)
+            intent.putExtra("site","https://drive.google.com/open?id=1PP1Z8g7GrI0CdSwEP0ftbt777YJLUHX0&usp=sharing")
             this.startActivity(intent)
         }
         cardView5.setOnClickListener {
-            //            val intent = Intent(this, PDFReader::class.java)
-//            this.startActivity(intent)
-
             val intent = Intent(this, TutorialActivity::class.java)
             this.startActivity(intent)
-
-
         }
+
+        //card CONTATO
+        cardView20.setOnClickListener {
+            val intent = Intent(this, Contato::class.java)
+            this.startActivity(intent)
+        }
+
+        //card SOBRE
+        cardView7.setOnClickListener {
+            val intent = Intent(this, SobreActivity::class.java)
+            this.startActivity(intent)
+        }
+
+
 
         if (primeiroAcesso) {
             dialogTutorial()
             dialogBoasVindas()
 
             /**
-             * Salva o "PRIMEIRO ACESSO"
+             * Muda o estado do item primeiroAcesso
              * para que o dialog não apareça novamente
              */
             pref.edit().putBoolean("primeiroAcesso", false).apply()
@@ -458,6 +469,11 @@ class MainActivity : AppCompatActivity() {
                 LATITUDE = location?.latitude.toString()
                 LONGITUDE = location?.longitude.toString()
 
+
+                /**
+                 * Ao encontrar a localização do usuário,
+                 * executa algumas ações como as de abaixo.
+                 */
                 cardView3.visibility = View.VISIBLE
                 btn_start_updates.setBackgroundColor(Color.GREEN)
                 btn_start_updates.text = "Localização OK!"

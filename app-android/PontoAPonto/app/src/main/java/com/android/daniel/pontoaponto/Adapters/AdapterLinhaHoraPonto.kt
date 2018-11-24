@@ -80,13 +80,14 @@ class AdapterLinhaHoraPonto(val pontosFeed: PontosFeed) : RecyclerView.Adapter<L
 
 class LHPViewHolder(val view: View, var ponto: Pontos? = null) : RecyclerView.ViewHolder(view) {
 
-    companion object {
-        val COURSE_LESSON_LINK = "COURSE_LESSON_LINK"
-    }
+//    companion object {
+//        val COURSE_LESSON_LINK = "COURSE_LESSON_LINK"
+//    }
 
     init {
         view.setOnClickListener {
             val intent = Intent(view.context, CourseLessonActivity::class.java)
+            intent.putExtra("site","https://drive.google.com/open?id=1PP1Z8g7GrI0CdSwEP0ftbt777YJLUHX0&usp=sharing")
             view.context.startActivity(intent)
         }
     }

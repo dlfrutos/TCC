@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.android.daniel.pontoaponto.R
+import com.android.daniel.pontoaponto.referencia.CourseLessonActivity
 import kotlinx.android.synthetic.main.activity_tutorial.*
 
 class TutorialActivity : AppCompatActivity() {
@@ -32,6 +33,14 @@ class TutorialActivity : AppCompatActivity() {
         cardView11.setOnClickListener {
             val intent = Intent(this, PDFReader::class.java)
             intent.putExtra("PDF", "Tutorial_SolicitarAlgo.pdf")
+            this.startActivity(intent)
+        }
+
+
+
+        textView58.setOnClickListener {
+            val intent = Intent(this, CourseLessonActivity::class.java)
+            intent.putExtra("site", "https://www.youtube.com/watch?v=UNzu4wQ3FKs")
             this.startActivity(intent)
         }
 
