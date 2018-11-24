@@ -55,7 +55,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:textStyle="bold"/>
             <TextView
-                    android:text="Se preferir para enviar um email para dlfrutos@hotmail.com"
+                    android:text="Se preferir poderá enviar um email para dlfrutos@hotmail.com"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView53" android:layout_marginStart="24dp"
