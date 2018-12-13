@@ -1,7 +1,7 @@
 {
   "versao": {
-	"DataHora":"2018/11/08 19:30",
-	"ID":"1.3",
+	"DataHora":"2018/12/13 16:30",
+	"ID":"1.4",
 	"OBS":"Atualizando pontos, inserindo o valor Ruas."
   },
 
@@ -93,8 +93,6 @@
 		{"PontoID":"Ponto 83","Latitude":"-26.16968","Longitude":"-50.40172","SentidoPonto":"Bairro","Comentario":"","Rua":"R. Roberto Eike"},
 		{"PontoID":"Ponto 66","Latitude":"-26.17062","Longitude":"-50.39736","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"R. Roberto Eike"},
 		{"PontoID":"Ponto 67","Latitude":"-26.17284","Longitude":"-50.39413","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"R. Getúlio Vargas"},
-		{"PontoID":"Ponto 1","Latitude":"-26.17371","Longitude":"-50.39008","SentidoPonto":"Bairro","Comentario":"Praça Lauro Mueller","Rua":"Praça Lauro Mueller"},
-		{"PontoID":"Ponto 1","Latitude":"-26.17371","Longitude":"-50.39008","SentidoPonto":"Bairro","Comentario":"Praça Lauro Mueller","Rua":"Praça Lauro Mueller"},
 		{"PontoID":"Ponto 86","Latitude":"-26.182","Longitude":"-50.38656","SentidoPonto":"Bairro","Comentario":"n/a","Rua":"R. Caetano Costa"},
 		{"PontoID":"Ponto 87","Latitude":"-26.18387","Longitude":"-50.38346","SentidoPonto":"Bairro","Comentario":"n/a","Rua":"R. Caetano Costa"},
 		{"PontoID":"Ponto 88","Latitude":"-26.18675","Longitude":"-50.37938","SentidoPonto":"Bairro","Comentario":"n/a","Rua":"Av. Rubens Ribeiro da Silva"},
