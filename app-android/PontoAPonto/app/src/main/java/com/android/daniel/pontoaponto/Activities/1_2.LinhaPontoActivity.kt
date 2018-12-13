@@ -64,7 +64,7 @@ class LinhaPontoActivity() : AppCompatActivity() {
         while (i < JSON_ATUAL!!.linhas.count()) {
             val pontoSelecionado = intent.getStringExtra(ListaPontoMaisProximoActivity.PONTO_SELECIONADO)
 
-            if (JSON_ATUAL!!.linhas.get(i).RoteiroPontos.contains(pontoSelecionado, true)) {
+            if (JSON_ATUAL!!.linhas.get(i).RoteiroPontos.contains(pontoSelecionado, false)) {
 //                pontosFeed2.linhas.get(j).LinhaID = JSON_ATUAL.linhas.get(i).LinhaID
 //                pontosFeed2.linhas.get(j).RoteiroFim = JSON_ATUAL.linhas.get(i).RoteiroFim
             } else {

@@ -1,20 +1,20 @@
 {
   "versao": {
-	"DataHora":"2018/12/13 17:30",
-	"ID":"1.5",
+	"DataHora":"2018/12/13 17:50",
+	"ID":"1.6",
 	"OBS":"Atualizando pontos, inserindo o valor Ruas."
   },
 
   "pontos": [
-		{"PontoID":"Ponto 1","Latitude":"-26.17371","Longitude":"-50.39008","SentidoPonto":"Bairro","Comentario":"Praça Lauro Mueller","Rua":"Praça Lauro Mueller"},
-		{"PontoID":"Ponto 2","Latitude":"-26.17314","Longitude":"-50.38816","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"R. Fracisco de Paula Pereira"},
-		{"PontoID":"Ponto 3","Latitude":"-26.17154","Longitude":"-50.38456","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"V. Guilherme Prust"},
-		{"PontoID":"Ponto 4","Latitude":"-26.1735","Longitude":"-50.37932","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"Av. Expedicionários "},
-		{"PontoID":"Ponto 5","Latitude":"-26.17628","Longitude":"-50.37574","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"Av. Expedicionários "},
-		{"PontoID":"Ponto 6","Latitude":"-26.18053","Longitude":"-50.37033","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"Av. Expedicionários "},
-		{"PontoID":"Ponto 7","Latitude":"-26.18301","Longitude":"-50.3672","SentidoPonto":"Bairro","Comentario":"IFSC","Rua":"Av. Expedicionários "},
-		{"PontoID":"Ponto 8","Latitude":"-26.18411","Longitude":"-50.36288","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"R. Alvino Voigt"},
-		{"PontoID":"Ponto 9","Latitude":"-26.18573","Longitude":"-50.36077","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"R. Alvino Voigt"},
+		{"PontoID":"Ponto 01","Latitude":"-26.17371","Longitude":"-50.39008","SentidoPonto":"Bairro","Comentario":"Praça Lauro Mueller","Rua":"Praça Lauro Mueller"},
+		{"PontoID":"Ponto 02","Latitude":"-26.17314","Longitude":"-50.38816","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"R. Fracisco de Paula Pereira"},
+		{"PontoID":"Ponto 03","Latitude":"-26.17154","Longitude":"-50.38456","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"V. Guilherme Prust"},
+		{"PontoID":"Ponto 04","Latitude":"-26.1735","Longitude":"-50.37932","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"Av. Expedicionários "},
+		{"PontoID":"Ponto 05","Latitude":"-26.17628","Longitude":"-50.37574","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"Av. Expedicionários "},
+		{"PontoID":"Ponto 06","Latitude":"-26.18053","Longitude":"-50.37033","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"Av. Expedicionários "},
+		{"PontoID":"Ponto 07","Latitude":"-26.18301","Longitude":"-50.3672","SentidoPonto":"Bairro","Comentario":"IFSC","Rua":"Av. Expedicionários "},
+		{"PontoID":"Ponto 08","Latitude":"-26.18411","Longitude":"-50.36288","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"R. Alvino Voigt"},
+		{"PontoID":"Ponto 09","Latitude":"-26.18573","Longitude":"-50.36077","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"R. Alvino Voigt"},
 		{"PontoID":"Ponto 10","Latitude":"-26.18674","Longitude":"-50.36037","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"R. Jacobe Scheuer"},
 		{"PontoID":"Ponto 11","Latitude":"-26.18796","Longitude":"-50.36464","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"Lateral SC280"},
 		{"PontoID":"Ponto 12","Latitude":"-26.18869","Longitude":"-50.36881","SentidoPonto":"Bairro","Comentario":"Ponto virtual","Rua":"Lateral SC280"},
