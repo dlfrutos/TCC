@@ -28,7 +28,7 @@ class PontosProximosAdapter(val pontosFeed: PontosFeed) : RecyclerView.Adapter<P
         holder.view.txt_ponto_id.text = nomePontos.PontoID
 
         //nomePontos.Distancia = 5
-        holder.view.txt_ponto_latitude.text = "Rua: " + nomePontos.Rua
+            holder.view.txt_ponto_latitude.text = "Rua: " + nomePontos.Rua
 //        holder.view.txt_ponto_longitude.text = "Longitude: " + nomePontos.Longitude
 //        holder.view.txt_ponto_distancia.text = "Distancia :" + nomePontos.Distancia
         holder.view.textView21.text = "" + nomePontos.Distancia+"m"
