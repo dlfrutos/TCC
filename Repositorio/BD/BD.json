@@ -1,7 +1,7 @@
 {
   "versao": {
-	"DataHora":"2018/12/13 17:50",
-	"ID":"1.6",
+	"DataHora":"2018/12/13 18:30",
+	"ID":"1.7",
 	"OBS":"Atualizando pontos, inserindo o valor Ruas."
   },
 
@@ -114,15 +114,15 @@
 	  {"LinhaID":"Aparecida",
 	  "RoteiroInicio":"Terminal urbano",
 	  "RoteiroFim":"Bairro Aparecida",
-	  "RoteiroPontos":"Ponto 1, Ponto 36, Ponto 37, Ponto 38, Ponto 39, Ponto 40, Ponto 41, Ponto 42, Ponto 43, Ponto 44, Ponto 45, Ponto 46, Ponto 47, Ponto 48, Ponto 49, Ponto 50, Ponto 51, Ponto 52, Ponto 53, Ponto 54, Ponto 55, Ponto 56, Ponto 57, Ponto 58, Ponto 59, Ponto 60, Ponto 61, Ponto 62, Ponto 63, Ponto 64, Ponto 65, Ponto 66, Ponto 67"
+	  "RoteiroPontos":"Ponto 01, Ponto 36, Ponto 37, Ponto 38, Ponto 39, Ponto 40, Ponto 41, Ponto 42, Ponto 43, Ponto 44, Ponto 45, Ponto 46, Ponto 47, Ponto 48, Ponto 49, Ponto 50, Ponto 51, Ponto 52, Ponto 53, Ponto 54, Ponto 55, Ponto 56, Ponto 57, Ponto 58, Ponto 59, Ponto 60, Ponto 61, Ponto 62, Ponto 63, Ponto 64, Ponto 65, Ponto 66, Ponto 67"
 	  },
 	  {"LinhaID":"Cohab I, II",
 	  "RoteiroInicio":"Terminal Urbano",
 	  "RoteiroFim":"Bairro Cohab II",
-	  "RoteiroPontos":"Ponto 1, Ponto 68, Ponto 69, Ponto 70, Ponto 71, Ponto 72, Ponto 73, Ponto 74, Ponto 75, Ponto 76, Ponto 77, Ponto 78, Ponto 79, Ponto 80, Ponto 81, Ponto 82, Ponto 64, Ponto 83, Ponto 84, Ponto 36, Ponto 85, Ponto 86, Ponto 87, Ponto 88, Ponto 89, Ponto 90, Ponto 91, Ponto 92, Ponto 93, Ponto 94, Ponto 95, Ponto 96, Ponto 97, Ponto 98, Ponto 99, Ponto 100, Ponto 53, Ponto 1"
+	  "RoteiroPontos":"Ponto 01, Ponto 68, Ponto 69, Ponto 70, Ponto 71, Ponto 72, Ponto 73, Ponto 74, Ponto 75, Ponto 76, Ponto 77, Ponto 78, Ponto 79, Ponto 80, Ponto 81, Ponto 82, Ponto 64, Ponto 83, Ponto 84, Ponto 36, Ponto 85, Ponto 86, Ponto 87, Ponto 88, Ponto 89, Ponto 90, Ponto 91, Ponto 92, Ponto 93, Ponto 94, Ponto 95, Ponto 96, Ponto 97, Ponto 98, Ponto 99, Ponto 100, Ponto 53, Ponto 1"
 	  },	    
 	  {"LinhaID":"Campo Água Verde",
-	  "RoteiroPontos":"Ponto 1, Ponto 2, Ponto 3, Ponto 4, Ponto 5, Ponto 6, Ponto 7, Ponto 8, Ponto 9, Ponto 10, Ponto 11, Ponto 12, Ponto 13, Ponto 14, Ponto 15, Ponto 16, Ponto 17, Ponto 18, Ponto 19, Ponto 20, Ponto 21, Ponto 22, Ponto 23, Ponto 24, Ponto 25, Ponto 26, Ponto 27, Ponto 28, Ponto 29, Ponto 30, Ponto 31, Ponto 32, Ponto 33, Ponto 34, Ponto 35",
+	  "RoteiroPontos":"Ponto 01, Ponto 02, Ponto 03, Ponto 04, Ponto 05, Ponto 06, Ponto 07, Ponto 08, Ponto 09, Ponto 10, Ponto 11, Ponto 12, Ponto 13, Ponto 14, Ponto 15, Ponto 16, Ponto 17, Ponto 18, Ponto 19, Ponto 20, Ponto 21, Ponto 22, Ponto 23, Ponto 24, Ponto 25, Ponto 26, Ponto 27, Ponto 28, Ponto 29, Ponto 30, Ponto 31, Ponto 32, Ponto 33, Ponto 34, Ponto 35",
 	  "RoteiroInicio":"Terminal Urbano",
 	  "RoteiroFim":"Bairro Campo Água Verde"
 	  }
@@ -260,15 +260,15 @@
   ],
   
   "horaLinhaPontos":[
-		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 1","Descrição":"Inicio da linha.","IntervaloMin":"0","IntervaloSeg":"0"},
-		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 2","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
-		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 3","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
-		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 4","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
-		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 5","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
-		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 6","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
-		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 7","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
-		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 8","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
-		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 9","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
+		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 01","Descrição":"Inicio da linha.","IntervaloMin":"0","IntervaloSeg":"0"},
+		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 02","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
+		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 03","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
+		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 04","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
+		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 05","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
+		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 06","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
+		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 07","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
+		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 08","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
+		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 09","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
 		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 10","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
 		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 11","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
 		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Bairro Água Verde","PontoID":"Ponto 12","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"42"},
@@ -296,7 +296,7 @@
 		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Praça Lauro Mueller","PontoID":"Ponto 34","Descrição":"-","IntervaloMin":"2","IntervaloSeg":"0"},
 		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Praça Lauro Mueller","PontoID":"Ponto 35","Descrição":"-","IntervaloMin":"2","IntervaloSeg":"0"},
 		{"LinhaID":"Campo Água Verde","RoteiroInicio":"Praça","SentidoLinha":"Praça Lauro Mueller","PontoID":"Ponto 1","Descrição":"Ponto final. ","IntervaloMin":"2","IntervaloSeg":"0"},
-		{"LinhaID":"Aparecida","RoteiroInicio":"Praça","SentidoLinha":"Bairro Piedade","PontoID":"Ponto 1","Descrição":"Ponto inicial.","IntervaloMin":"1","IntervaloSeg":"52"},
+		{"LinhaID":"Aparecida","RoteiroInicio":"Praça","SentidoLinha":"Bairro Piedade","PontoID":"Ponto 01","Descrição":"Ponto inicial.","IntervaloMin":"1","IntervaloSeg":"52"},
 		{"LinhaID":"Aparecida","RoteiroInicio":"Praça","SentidoLinha":"Bairro Piedade","PontoID":"Ponto 36","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"52"},
 		{"LinhaID":"Aparecida","RoteiroInicio":"Praça","SentidoLinha":"Bairro Piedade","PontoID":"Ponto 37","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"52"},
 		{"LinhaID":"Aparecida","RoteiroInicio":"Praça","SentidoLinha":"Bairro Piedade","PontoID":"Ponto 38","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"52"},
@@ -329,7 +329,7 @@
 		{"LinhaID":"Aparecida","RoteiroInicio":"Praça","SentidoLinha":"Centro","PontoID":"Ponto 65","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"52"},
 		{"LinhaID":"Aparecida","RoteiroInicio":"Praça","SentidoLinha":"Centro","PontoID":"Ponto 66","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"52"},
 		{"LinhaID":"Aparecida","RoteiroInicio":"Praça","SentidoLinha":"Centro","PontoID":"Ponto 67","Descrição":"Ponto final. ","IntervaloMin":"1","IntervaloSeg":"52"},
-		{"LinhaID":"Cohab I, II","RoteiroInicio":"Praça","SentidoLinha":"Sentido Fricassa","PontoID":"Ponto 1","Descrição":"Ponto incial. ","IntervaloMin":"1","IntervaloSeg":"37"},
+		{"LinhaID":"Cohab I, II","RoteiroInicio":"Praça","SentidoLinha":"Sentido Fricassa","PontoID":"Ponto 01","Descrição":"Ponto incial. ","IntervaloMin":"1","IntervaloSeg":"37"},
 		{"LinhaID":"Cohab I, II","RoteiroInicio":"Praça","SentidoLinha":"Sentido Fricassa","PontoID":"Ponto 68","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"37"},
 		{"LinhaID":"Cohab I, II","RoteiroInicio":"Praça","SentidoLinha":"Sentido Fricassa","PontoID":"Ponto 69","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"37"},
 		{"LinhaID":"Cohab I, II","RoteiroInicio":"Praça","SentidoLinha":"Sentido Fricassa","PontoID":"Ponto 70","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"37"},
@@ -366,6 +366,6 @@
 		{"LinhaID":"Cohab I, II","RoteiroInicio":"Praça","SentidoLinha":"Centro","PontoID":"Ponto 99","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"37"},
 		{"LinhaID":"Cohab I, II","RoteiroInicio":"Praça","SentidoLinha":"Centro","PontoID":"Ponto 100","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"37"},
 		{"LinhaID":"Cohab I, II","RoteiroInicio":"Praça","SentidoLinha":"Centro","PontoID":"Ponto 53","Descrição":"-","IntervaloMin":"1","IntervaloSeg":"37"},
-		{"LinhaID":"Cohab I, II","RoteiroInicio":"Praça","SentidoLinha":"Centro","PontoID":"Ponto 1","Descrição":"Ponto final. ","IntervaloMin":"1","IntervaloSeg":"37"}
+		{"LinhaID":"Cohab I, II","RoteiroInicio":"Praça","SentidoLinha":"Centro","PontoID":"Ponto 01","Descrição":"Ponto final. ","IntervaloMin":"1","IntervaloSeg":"37"}
   ]
 }
