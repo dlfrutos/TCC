@@ -112,16 +112,19 @@ class ListaPontoMaisProximoActivity : AppCompatActivity() {
                     val temp_lat = pontosFeed.pontos.get(i).Latitude
                     val temp_lon = pontosFeed.pontos.get(i).Longitude
                     val temp_id = pontosFeed.pontos.get(i).PontoID
+                    val temp_rua=pontosFeed.pontos.get(i).Rua
 
                     pontosFeed.pontos.get(i).Distancia = pontosFeed.pontos.get(j).Distancia
                     pontosFeed.pontos.get(i).Latitude = pontosFeed.pontos.get(j).Latitude
                     pontosFeed.pontos.get(i).Longitude = pontosFeed.pontos.get(j).Longitude
                     pontosFeed.pontos.get(i).PontoID = pontosFeed.pontos.get(j).PontoID
+                    pontosFeed.pontos.get(i).Rua = pontosFeed.pontos.get(j).Rua
 
                     pontosFeed.pontos.get(j).Distancia = temp_dist
                     pontosFeed.pontos.get(j).Latitude = temp_lat
                     pontosFeed.pontos.get(j).Longitude = temp_lon
                     pontosFeed.pontos.get(j).PontoID = temp_id
+                    pontosFeed.pontos.get(j).Rua = temp_rua
                 }
             }
         }

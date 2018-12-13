@@ -142,53 +142,7 @@ class MainActivity : AppCompatActivity() {
                 btn_start_updates.isEnabled = !btn_start_updates.isEnabled
                 //Toast.makeText(this, "Localização atualizada.", Toast.LENGTH_SHORT).show()
             })
-
-            //down
-            /**
-            //            btn_stop_updates.setOnClickListener(View.OnClickListener {
-            //                if (
-            //                        ActivityCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-            //                        ActivityCompat.checkSelfPermission(this@MainActivity, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            //                    ActivityCompat.requestPermissions(this@MainActivity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_CODE)
-            //                    return@OnClickListener
-            //                }
-            //
-            //                fusedLocationProviderClient.removeLocationUpdates(locationCallback)
-            //                //mudando stado do botão
-            //                btn_start_updates.isEnabled = !btn_start_updates.isEnabled
-            //                btn_stop_updates.isEnabled = !btn_stop_updates.isEnabled
-            //            })
-
-            //testando a função main
-            //textView2.setBackgroundColor(Color.RED)
-
-             **/
         }
-
-        //down
-        /**
-        //CARREGA ACTIVITY BUSCAR PONTOS COM OS DADOS DE LATITUDE E LONGITUDE
-        //        btn_BuscaPontoMaisProximo.setOnClickListener() {
-        //            val intent1 = Intent(this, ListaPontoMaisProximoActivity::class.java)
-        //            intent1.putExtra(LOC_LAT, LATITUDE)
-        //            intent1.putExtra(LOC_LON, LONGITUDE)
-        //
-        //            startActivity(intent1)
-        //        }
-        //        btn_TesteCourses.setOnClickListener() {
-        //            val intent2 = Intent(this, CourseActivity::class.java)
-        //            startActivity(intent2)
-        //        }
-        //        btn_ListaPontos.setOnClickListener() {
-        //            val intent3 = Intent(this, ListaPontoActivity::class.java)
-        //            startActivity(intent3)
-        //        }
-        //        btn_ListaLinhas.setOnClickListener() {
-        //            val intent4 = Intent(this, ListaLinhaActivity::class.java)
-        //            startActivity(intent4)
-        //        }
-         **/
-
 
         //card PONTO MAIS PRÓXIMO
         cardView3.setOnClickListener {
@@ -215,7 +169,7 @@ class MainActivity : AppCompatActivity() {
         //cardMapa
         cardView4.setOnClickListener {
             val intent = Intent(this, CourseLessonActivity::class.java)
-            intent.putExtra("site","https://drive.google.com/open?id=1PP1Z8g7GrI0CdSwEP0ftbt777YJLUHX0&usp=sharing")
+            intent.putExtra("site", "https://drive.google.com/open?id=1PP1Z8g7GrI0CdSwEP0ftbt777YJLUHX0&usp=sharing")
             this.startActivity(intent)
         }
         cardView5.setOnClickListener {
@@ -235,8 +189,6 @@ class MainActivity : AppCompatActivity() {
             this.startActivity(intent)
         }
 
-
-
         if (primeiroAcesso) {
             dialogTutorial()
             dialogBoasVindas()
@@ -247,7 +199,6 @@ class MainActivity : AppCompatActivity() {
              */
             pref.edit().putBoolean("primeiroAcesso", false).apply()
         }
-
     }
 
     private fun dialogClicarNovamente() {
@@ -346,7 +297,6 @@ class MainActivity : AppCompatActivity() {
             JSON_ATUAL = gson.fromJson(BD_ATUAL, PontosFeed::class.java)
         } catch (ex: Exception) {
         }
-
 
         //caso não tenha internet
         if (JSON_NET == null) {
